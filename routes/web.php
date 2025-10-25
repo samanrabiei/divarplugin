@@ -6,9 +6,12 @@ use App\Http\Middleware\Appmiddleware;
 use App\Http\Controllers\Authentication;
 use App\Http\Controllers\blogcontroller;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\userController;
+use App\Http\Controllers\DivarController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\categorycontroller;
-use App\Http\Controllers\userController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\ServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,3 +81,16 @@ Route::get('/test/blog', [TestController::class, 'post'])->name('test.post');
 Route::get('/test/comment', [TestController::class, 'comment'])->name('test.comment');
 
 Route::get('user/', [userController::class, 'index'])->name('user.index');
+
+
+//divar
+Route::get('/divar', [DivarController::class, 'index'])->name('divar.index');
+
+
+
+//servicess
+Route::get('/services/shahkarinquiry', [ServiceController::class, 'shahkarinquiry'])->name('services.shahkarinquiry');
+Route::post('/services/shahkarinquiry', [ServiceController::class, 'shahkarinquirydata'])->name('services.shahkarinquirypost');
+
+//ceckout
+Route::get('/checkout/showform', [CheckoutController::class, 'showForm'])->name('checkout.showForm');
