@@ -25553,8 +25553,8 @@ label input {
   padding: 0;
   background: var(--bg-white);
   display: inline-block;
-  width: 60px;
-  height: 35px;
+  width: 134PX;
+  height: 44px;
   line-height: 30px;
   position: relative;
   transition: none;
