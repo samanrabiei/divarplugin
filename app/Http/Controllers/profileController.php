@@ -6,5 +6,8 @@ use Illuminate\Http\Request;
 
 class profileController extends Controller
 {
-    //
+    public function profile()
+    {
+        return view('divar.profile.profile');
+    }
 }

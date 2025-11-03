@@ -160,4 +160,6 @@ class TestController extends Controller
         $comment = comments::find(1);
         dd($comment->post);
     }
+
+    
 }

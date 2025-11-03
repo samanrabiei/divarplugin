@@ -20,14 +20,18 @@ class ServiceController extends Controller
         ]);
         // ساخت یک شناسه‌ی منحصربه‌فرد برای تراکنش
         $transactionId = uniqid('txn_');
+        $price = '6000';
         // ذخیره اطلاعات در session
         session([
             "transactions.$transactionId" => [
                 'phone' => $request->phone,
                 'codemele' => $request->codemele,
+                'price' =>  $price,
+                'transactions_id' =>  $transactionId,
+
             ],
         ]);
-
-   
+        // ریدایرکت به کنترلر دیگر
+        return redirect()->route('checkout.showForm', ['transactionId' => $transactionId]);
     }
 }

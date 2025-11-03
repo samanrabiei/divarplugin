@@ -5,16 +5,15 @@
         <div class="container">
             <div class="header-content">
                 <div class="left-content">
-                    <a href="javascript:void(0);" class="back-btn">
+                    {{-- <a href="javascript:void(0);" class="back-btn">
                         <i class="icon feather icon-chevron-right"></i>
-                    </a>
+                    </a> --}}
                     <h6 class="title">سرویس ها</h6>
                 </div>
                 <div class="mid-content">
                 </div>
                 <div class="right-content">
-                    <a href="search.html" class="search-icon">
-                        <i class="icon feather icon-search"></i>
+                    <a href="{{ route('profile.profile') }}" class="nav-link active"><i class="icon feather icon-user"></i>
                     </a>
                 </div>
             </div>

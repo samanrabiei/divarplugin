@@ -8,10 +8,12 @@ use App\Http\Controllers\blogcontroller;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\DivarController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\profileController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\categorycontroller;
 use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\ServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +26,7 @@ use App\Http\Controllers\ServiceController;
 |
 */
 
-Route::get('/', [blogcontroller::class, 'index'])->name('blog.index')->middleware(appMiddleware::class);
+Route::get('/shahkarinquiry', [ServiceController::class, 'shahkarinquiry'])->name('services.shahkarinquiry');
 
 
 Route::prefix('blog')->name('blog.')->middleware('auth')->group(function () {
@@ -63,8 +65,7 @@ Route::post('/password/resetpost', [Authentication::class, 'resetPasswordpost'])
 Route::get('/password/newpassword/{token}', [Authentication::class, 'NewPassword'])->name('new.password');
 Route::post('/password/postnewpassword', [Authentication::class, 'SubmitNewPassword'])->name('SubmitNewPassword');
 
-Route::get('/payment/send', [PaymentController::class, 'send'])->name('payment.send');
-Route::get('/payment/callback', [PaymentController::class, 'callback'])->name('payment.callback');
+
 
 Route::get('/test', [TestController::class, 'index'])->name('test.index');
 Route::get('/test/quiry', [TestController::class, 'quiry'])->name('test.quiry');
@@ -81,10 +82,11 @@ Route::get('/test/blog', [TestController::class, 'post'])->name('test.post');
 Route::get('/test/comment', [TestController::class, 'comment'])->name('test.comment');
 
 Route::get('user/', [userController::class, 'index'])->name('user.index');
+Route::get('profile/', [profileController::class, 'profile'])->name('profile.profile');
 
 
 //divar
-Route::get('/divar', [DivarController::class, 'index'])->name('divar.index');
+Route::get('/', [DivarController::class, 'index'])->name('divar.index');
 
 
 
@@ -93,4 +95,10 @@ Route::get('/services/shahkarinquiry', [ServiceController::class, 'shahkarinquir
 Route::post('/services/shahkarinquiry', [ServiceController::class, 'shahkarinquirydata'])->name('services.shahkarinquirypost');
 
 //ceckout
-Route::get('/checkout/showform', [CheckoutController::class, 'showForm'])->name('checkout.showForm');
+Route::get('/checkout/showform/{transactionId}', [CheckoutController::class, 'showForm'])->name('checkout.showForm');
+Route::get('/checkout/payement', [CheckoutController::class, 'payement'])->name('checkout.payement');
+
+
+Route::get('/invoice', [InvoiceController::class, 'create'])->name('invoice.create');
+Route::post('/invoice/pay', [InvoiceController::class, 'pay'])->name('invoice.pay');
+Route::get('/payment/callback', [InvoiceController::class, 'callback'])->name('payment.callback');
