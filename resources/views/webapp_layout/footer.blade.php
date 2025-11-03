@@ -1,4 +1,5 @@
 <!-- Page Content End -->
+@livewireScripts
 </div>
 <!--**********************************
     Scripts
