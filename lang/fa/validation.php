@@ -180,6 +180,7 @@ return [
     'attributes' => [
         'codemele' => 'کد ملی',
         'phone' => 'موبایل',
+        'gavanin' => 'پذیرش قوانین',
 
     ],
 

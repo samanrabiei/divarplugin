@@ -88,7 +88,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="welcome.html" class="item-content item-link">
+                            <a href="{{ route('logout') }}" class="item-content item-link">
                                 <div class="dz-icon"><i class="icon feather icon-log-out"></i></div>
                                 <div class="dz-inner"><span class="title">خروج</span></div>
                             </a>

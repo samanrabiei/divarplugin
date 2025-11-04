@@ -15,7 +15,7 @@ class Authentication extends Controller
 {
     public function formregister(Request $request)
     {
-        return view('auth.register');
+        return view('divar.auth.signup');
     }
 
     public function register(Request $request)
@@ -41,7 +41,7 @@ class Authentication extends Controller
         if (auth()->check()) {
             return redirect()->route('blog.index');
         }
-        return view('auth.login');
+        return view('divar.auth.login');
     }
     public function submitlogin(Request $request)
     {
@@ -76,7 +76,7 @@ class Authentication extends Controller
     {
         return view('auth.reset');
     }
-    
+
     public function resetPasswordpost(Request $request)
     {
         $request->validate([

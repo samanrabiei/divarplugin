@@ -14,7 +14,7 @@ use App\Http\Controllers\profileController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\categorycontroller;
 use App\Http\Controllers\CheckoutController;
-
+use App\Http\Controllers\Auth\OtpLoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -102,3 +102,17 @@ Route::get('/checkout/payement', [CheckoutController::class, 'payement'])->name(
 Route::get('/invoice', [InvoiceController::class, 'create'])->name('invoice.create');
 Route::post('/invoice/pay', [InvoiceController::class, 'pay'])->name('invoice.pay');
 Route::get('/payment/callback', [InvoiceController::class, 'callback'])->name('payment.callback');
+
+//OTP
+Route::get('/login-phone', [OtpLoginController::class, 'showPhoneForm'])->name('otp.phone.form');
+Route::post('/login-phone', [OtpLoginController::class, 'sendOtp'])->name('otp.send');
+
+Route::get('/verify-otp', [OtpLoginController::class, 'showVerifyForm'])->name('otp.verify.form');
+Route::post('/verify-otp', [OtpLoginController::class, 'verifyOtp'])->name('otp.verify');
+
+Route::get('/logout', [OtpLoginController::class, 'logout'])->name('logout');
+
+
+Route::get('/home', function () {
+    return view('home');
+})->middleware('auth');
