@@ -19,14 +19,14 @@
         <div class="container">
             <div class="profile-area">
                 <div class="main-profile">
-                    <div class="media media-60 me-3 rounded-circle">
+                    {{-- <div class="media media-60 me-3 rounded-circle">
                         <img src="assets/images/user-profile.jpg" alt="تصویر پروفایل">
-                    </div>
+                    </div> --}}
                     <div class="profile-detail">
-                        <h6 class="name">توماس دیجون</h6>
-                        <span class="font-12">شناسه 02123141</span>
+                        <h6 class="name"> {{ $user->phone }}</h6>
+                        <span class="font-12">شما با شماره {{ $user->phone }} وارد شده اید.</span>
                     </div>
-                    <a href="edit-profile.html" class="edit-profile"><i class="icon feather icon-edit-2"></i></a>
+                    {{-- <a href="edit-profile.html" class="edit-profile"><i class="icon feather icon-edit-2"></i></a> --}}
                 </div>
                 {{-- <div class="content-box">
                     <ul class="row g-2">
@@ -61,12 +61,12 @@
                 </div>
                 <div class="dz-list style-1">
                     <ul>
-                        <li>
+                        {{-- <li>
                             <a href="edit-profile.html" class="item-content item-link">
                                 <div class="dz-icon"><i class="icon feather icon-user"></i></div>
                                 <div class="dz-inner"><span class="title">ویرایش پروفایل</span></div>
                             </a>
-                        </li>
+                        </li> --}}
                         {{-- <li>
                             <a href="address.html" class="item-content item-link">
                                 <div class="dz-icon"><i class="icon feather icon-map-pin"></i></div>
@@ -81,10 +81,10 @@
                             </a>
                         </li> --}}
                         <li>
-                            <a href="notification.html" class="item-content item-link">
+                            <a href="#" class="item-content item-link">
                                 <div class="dz-icon"><i class="icon feather icon-bell"></i></div>
                                 <div class="dz-inner me-2"><span class="title">اعلان‌ها</span></div>
-                                <div class="badge badge-primary">5</div>
+                                <div class="badge badge-primary">0</div>
                             </a>
                         </li>
                         <li>
