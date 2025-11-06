@@ -37,6 +37,9 @@
                         </div>
 
                         <button class="btn mb-3 btn-primary w-100" type="submit">ورود / ثبت نام</button>
+                        <p class="btn-link text-center mb-3 text-dark">با حساب دیوار خود وارد
+                            نمایید؟</p>
+                        <a href="{{ route('kenar.login') }}" class="btn mb-3 btn-outline-primary w-100">ورود با دیوار</a>
                         <div id="timerBox" class="text-center mt-3" style="display:none;">
                             <span>ارسال مجدد کد تا </span>
                             <span id="countdown" class="text-primary fw-bold">120</span>

@@ -15,6 +15,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\categorycontroller;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Auth\OtpLoginController;
+use App\Http\Controllers\KenarOauthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -82,26 +83,25 @@ Route::get('/test/blog', [TestController::class, 'post'])->name('test.post');
 Route::get('/test/comment', [TestController::class, 'comment'])->name('test.comment');
 
 Route::get('user/', [userController::class, 'index'])->name('user.index');
-Route::get('profile/', [profileController::class, 'profile'])->name('profile.profile');
+
 
 
 //divar
 Route::get('/', [DivarController::class, 'index'])->name('divar.index');
-
-
+Route::get('profile/', [profileController::class, 'profile'])->middleware('auth')->name('profile.profile');
 
 //servicess
-Route::get('/services/shahkarinquiry', [ServiceController::class, 'shahkarinquiry'])->name('services.shahkarinquiry');
-Route::post('/services/shahkarinquiry', [ServiceController::class, 'shahkarinquirydata'])->name('services.shahkarinquirypost');
+Route::get('/services/shahkarinquiry', [ServiceController::class, 'shahkarinquiry'])->middleware('auth')->name('services.shahkarinquiry');
+Route::post('/services/shahkarinquiry', [ServiceController::class, 'shahkarinquirydata'])->middleware('auth')->name('services.shahkarinquirypost');
 
 //ceckout
-Route::get('/checkout/showform/{transactionId}', [CheckoutController::class, 'showForm'])->name('checkout.showForm');
-Route::get('/checkout/payement', [CheckoutController::class, 'payement'])->name('checkout.payement');
+Route::get('/checkout/showform/{transactionId}', [CheckoutController::class, 'showForm'])->middleware('auth')->name('checkout.showForm');
+Route::get('/checkout/payement', [CheckoutController::class, 'payement'])->middleware('auth')->name('checkout.payement');
 
 
-Route::get('/invoice', [InvoiceController::class, 'create'])->name('invoice.create');
-Route::post('/invoice/pay', [InvoiceController::class, 'pay'])->name('invoice.pay');
-Route::get('/payment/callback', [InvoiceController::class, 'callback'])->name('payment.callback');
+Route::get('/invoice', [InvoiceController::class, 'create'])->middleware('auth')->name('invoice.create');
+Route::post('/invoice/pay', [InvoiceController::class, 'pay'])->middleware('auth')->name('invoice.pay');
+Route::get('/payment/callback', [InvoiceController::class, 'callback'])->middleware('auth')->name('payment.callback');
 
 //OTP
 Route::get('/login-phone', [OtpLoginController::class, 'showPhoneForm'])->name('otp.phone.form');
@@ -110,9 +110,14 @@ Route::post('/login-phone', [OtpLoginController::class, 'sendOtp'])->name('otp.s
 Route::get('/verify-otp', [OtpLoginController::class, 'showVerifyForm'])->name('otp.verify.form');
 Route::post('/verify-otp', [OtpLoginController::class, 'verifyOtp'])->name('otp.verify');
 
-Route::get('/logout', [OtpLoginController::class, 'logout'])->name('logout');
+Route::get('/logout', [OtpLoginController::class, 'logout'])->middleware('auth')->name('logout');
 
 
 Route::get('/home', function () {
     return view('home');
 })->middleware('auth');
+
+
+//divar
+Route::get('/kenar/login', [KenarOauthController::class, 'redirectToKenar'])->name('kenar.login');
+Route::get('/kenar/callback', [KenarOauthController::class, 'handleCallback'])->name('kenar.callback');
