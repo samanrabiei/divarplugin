@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
+use App\Services\SMSService;
 
 class OtpLoginController extends Controller
 {
@@ -45,8 +46,15 @@ class OtpLoginController extends Controller
         Session::put('phone', $phone);
         Session::put('otp_sent_at', now()); // ذخیره زمان ارسال
 
-        // نمایش OTP برای تست
-        return redirect()->route('otp.verify.form')->with('status', "$phone - کد ورود شما: $otp");
+
+        $sms = new SMSService();
+        $result = $sms->sendVerificationCode($phone, $otp);
+        if ($result == true) {
+            return redirect()->route('otp.verify.form')->with('status', "$phone");
+        } else {
+
+            return redirect()->route('otp.phone.form')->with('status', "$phone");
+        }
     }
 
     // نمایش فرم وارد کردن کد

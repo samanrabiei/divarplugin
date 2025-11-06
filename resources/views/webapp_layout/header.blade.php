@@ -4,7 +4,7 @@
 <head>
 
     <!-- Title -->
-    <title>Wedo - قالب اپلیکیشن موبایل تجارت الکترونیک (Bootstrap + PWA)</title>
+    <title>اعتمادینو – سامانه یکپارچه احراز هویت، خدمات بانکی و استعلامات</title>
 
     <meta charset="utf-8">
     <meta name="viewport"
