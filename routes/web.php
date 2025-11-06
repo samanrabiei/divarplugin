@@ -78,6 +78,7 @@ Route::get('/test/ass', [TestController::class, 'MassAssignment'])->name('test.M
 Route::get('/test/scope_global', [TestController::class, 'scope_global'])->name('test.scope_global');
 Route::get('/test/scope_global', [TestController::class, 'scope_global'])->name('test.scope_global');
 Route::get('/test/route_model_binding/{id}', [TestController::class, 'route_model_binding'])->name('test.route_model_binding');
+Route::get('/test/wallet', [TestController::class, 'wallet'])->name('test.wallet');
 
 Route::get('/test/blog', [TestController::class, 'post'])->name('test.post');
 Route::get('/test/comment', [TestController::class, 'comment'])->name('test.comment');

@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\blog;
-use App\Models\comments;
 use App\Models\test;
+use App\Models\User;
+use App\Models\comments;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
+use PHPUnit\Util\Test as UtilTest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
-use PHPUnit\Util\Test as UtilTest;
+
 
 class TestController extends Controller
 {
@@ -161,5 +163,11 @@ class TestController extends Controller
         dd($comment->post);
     }
 
-    
+    public function wallet()
+    {
+        $user = User::find(5);
+        $user->deposit(500000);  // واریز
+        // $user->withdraw(900); // برداشت
+        dd($user->balance); // نمایش موجودی کیف پول
+    }
 }
