@@ -90,6 +90,7 @@ Route::get('user/', [userController::class, 'index'])->name('user.index');
 //divar
 Route::get('/', [DivarController::class, 'index'])->name('divar.index');
 Route::get('profile/', [profileController::class, 'profile'])->middleware('auth')->name('profile.profile');
+Route::get('profile/wallet', [profileController::class, 'wallet'])->middleware('signed')->name('profile.wallet');
 
 //servicess
 Route::get('/services/shahkarinquiry', [ServiceController::class, 'shahkarinquiry'])->middleware('auth')->name('services.shahkarinquiry');
