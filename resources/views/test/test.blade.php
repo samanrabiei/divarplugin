@@ -1,31 +1,23 @@
-@extends('layout.master')
-
-
+@extends('webapp_layout.master')
 @section('content')
-    <ul class="list-group list-group-flush">
-        <table class="table table-striped">
-            <thead class="table-dark">
-                <tr>
-                    <th scope="col">ردیف</th>
-                    <th scope="col">عنوان</th>
-
-                    <th scope="col">432</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{-- @foreach ($data as $blog)
-                    <tr>
-                        <td></td>
-                        <td>{{ $blog->title }}</td>
-                        <td>{{ $blog->status }}</td>
+    <section id="toast" class="info">
+        <div id="icon-wrapper">
+            <div id="icon"></div>
+        </div>
+        <div id="toast-message">
+            <h4>Status</h4>
+            <p>Descriptive Message.</p>
+        </div>
+        <button id="toast-close"></button>
+        <div id="timer"></div>
+    </section>
 
 
-                    </tr>
-                @endforeach --}}
-                <td>{{ $data->title }}</td>
-                <td>{{ $data->status }}</td>
-            </tbody>
-        </table>
-
-    </ul>
-@endsection
+    <main>
+        <h1>Toast Notifications</h1>
+        <p>Select a button to trigger the different types of toast notifications:</p>
+        <button id="successBtn" onclick="openToast('success')">Success</button>
+        <button id="warningBtn" onclick="openToast('warning')">Warning</button>
+        <button id="errorBtn" onclick="openToast('error')">Error</button>
+        <button id="infoBtn" onclick="openToast('info')">Info</button>
+    @endsection

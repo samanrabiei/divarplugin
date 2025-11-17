@@ -18,7 +18,13 @@
     <div class="page-content space-top">
         <div class="container">
             <div class="profile-area">
+
                 <div class="main-profile">
+
+                    {{-- toast --}}
+                    <x-toast.toast />
+                    {{-- End toast --}}
+
                     {{-- <div class="media media-60 me-3 rounded-circle">
                         <img src="assets/images/user-profile.jpg" alt="تصویر پروفایل">
                     </div> --}}

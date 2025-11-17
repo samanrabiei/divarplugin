@@ -34,9 +34,9 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" class="main-css" type="text/css" href="{{ asset('assets/css/style-rtl.css') }}">
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    {{-- toast --}}
+    <link rel="stylesheet" href="{{ asset('assets/toast/style.css') }}">
+
     <link
         href="../css2-2?family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
@@ -55,4 +55,5 @@
                 </div>
             </div>
         </div>
+
         <!-- Preloader end-->

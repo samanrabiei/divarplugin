@@ -11,6 +11,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use PHPUnit\Util\Test as UtilTest;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
 
@@ -165,9 +166,17 @@ class TestController extends Controller
 
     public function wallet()
     {
-        $user = User::find(5);
-        $user->deposit(500000);  // واریز
-        // $user->withdraw(900); // برداشت
-        dd($user->balance); // نمایش موجودی کیف پول
+        // $id =  Auth::id();
+        // $user = User::find($id);
+        // $user->deposit(500000);  // واریز
+        // // $user->withdraw(900); // برداشت
+        // // نمایش موجودی کیف پول
+        // dd($user->balance, $id);
+        session()->flash('success', [
+            'title' => 'موفق!',
+            'message' => 'عملیات با موفقیت انجام شد'
+        ]);
+
+        return view('test.test');
     }
 }
