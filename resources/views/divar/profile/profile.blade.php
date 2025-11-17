@@ -4,7 +4,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="left-content">
-                    <a href="{{ route('divar.index') }}" class="back-btn"><i class="icon feather icon-chevron-right"></i></a>
+                    <a href="{{ url()->previous() }}" class="back-btn"><i class="icon feather icon-chevron-right"></i></a>
                 </div>
                 <div class="mid-content">
                     <h6 class="title">پروفایل</h6>
@@ -133,9 +133,28 @@
                             <div class="dz-inner"><span class="title">100 هزار تومان</span></div>
                         </a>
                     </li>
+                    <li data-amount="200000">
+                        <a href="#" class="item-content py-2 item-link">
+                            <div class="media media-30 me-3"><img src="assets/images/flags/4.svg"></div>
+                            <div class="dz-inner"><span class="title">200 هزار تومان</span></div>
+                        </a>
+                    </li>
+                    <li data-amount="500000">
+                        <a href="#" class="item-content py-2 item-link">
+                            <div class="media media-30 me-3"><img src="assets/images/flags/5.svg"></div>
+                            <div class="dz-inner"><span class="title">500 هزار تومان</span></div>
+                        </a>
+                    </li>
+                    <li data-amount="1000000">
+                        <a href="#" class="item-content py-2 item-link">
+                            <div class="media media-30 me-3"><img src="assets/images/flags/6.svg"></div>
+                            <div class="dz-inner"><span class="title"> یک میلیون تومان</span></div>
+                        </a>
+                    </li>
                 </ul>
 
-                <form id="sendAmountForm" action="{{ route('profile.wallet.post') }}" method="POST" style="display:none;">
+                <form id="sendAmountForm" action="{{ route('profile.wallet.post') }}" method="POST"
+                    style="display:none;">
                     @csrf
                     <input type="hidden" name="amount" id="amountInput">
                 </form>

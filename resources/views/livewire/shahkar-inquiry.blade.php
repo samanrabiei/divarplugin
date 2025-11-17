@@ -3,10 +3,27 @@
         <div class="container">
             <div class="header-content">
                 <div class="left-content">
-                    <a href="{{ route('divar.index') }}" class="back-btn">
+                    <a href="{{ url()->previous() }}" class="back-btn">
                         <i class="icon feather icon-chevron-right"></i>
                     </a>
                     <h6 class="title">تطابق کد ملی و شماره موبایل</h6>
+                </div>
+                <div class="mid-content"></div>
+                <div class="right-content">
+                    <ul class="nav nav-pills light style-1" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="pills-list-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-list" type="button" role="tab" aria-controls="pills-list"
+                                aria-selected="true">
+                                <i class="icon feather icon-phone"><a
+                                        href="https://open-platform-redirect.divar.ir/completion">
+                                        بازگشت به دیوار
+                                    </a>
+                                </i>
+                            </button>
+                        </li>
+
+                    </ul>
                 </div>
             </div>
         </div>

@@ -18,35 +18,4 @@ class CheckoutController extends Controller
 
         return view('divar.checkout.checkout', compact('transaction'));
     }
-
-    public function processForm(Request $request)
-    {
-
-        // ولیدیت کردن داده‌ها
-        $request->validate([
-            'amount' => 'required|numeric|min:1000',
-            'currency' => 'required|in:toman,rial',
-        ]);
-
-        // اطلاعات معتبر، حالا می‌تونیم به صفحه نمایش ارسال کنیم
-        $data = [
-            'amount' => $request->amount,
-            'currency' => $request->currency,
-        ];
-
-        return view('checkout.summary', compact('data'));
-    }
-
-    public function payement()
-    {
-
-
-        $invoice = (new Invoice)->amount(1000); // مبلغ به ریال
-
-        return Payment::via('zibal')->purchase($invoice, function ($driver, $transactionId) {
-
-            // ذخیره تراکنش
-
-        })->pay()->render();
-    }
 }

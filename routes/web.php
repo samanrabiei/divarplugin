@@ -80,8 +80,8 @@ Route::get('/test/scope_global', [TestController::class, 'scope_global'])->name(
 Route::get('/test/route_model_binding/{id}', [TestController::class, 'route_model_binding'])->name('test.route_model_binding');
 Route::get('/test/wallet', [TestController::class, 'wallet'])->name('test.wallet');
 
-Route::get('/test/blog', [TestController::class, 'post'])->name('test.post');
-Route::get('/test/comment', [TestController::class, 'comment'])->name('test.comment');
+// Route::get('/test/blog', [TestController::class, 'post'])->name('test.post');
+// Route::get('/test/comment', [TestController::class, 'comment'])->name('test.comment');
 
 Route::get('user/', [userController::class, 'index'])->name('user.index');
 
@@ -91,10 +91,11 @@ Route::get('user/', [userController::class, 'index'])->name('user.index');
 Route::get('/', [DivarController::class, 'index'])->name('divar.index');
 Route::get('profile/', [profileController::class, 'profile'])->middleware('auth')->name('profile.profile');
 Route::get('profile/wallet', [profileController::class, 'wallet'])->middleware('signed')->name('profile.wallet');
+Route::post('profile/wallet/post', [profileController::class, 'wallet'])->name('profile.wallet.post')->middleware('auth');
 
 //servicess
 Route::get('/services/shahkarinquiry', [ServiceController::class, 'shahkarinquiry'])->middleware('auth')->name('services.shahkarinquiry');
-Route::post('/services/shahkarinquiry', [ServiceController::class, 'shahkarinquirydata'])->middleware('auth')->name('services.shahkarinquirypost');
+Route::get('/services/requiest/{transicon}', [ServiceController::class, 'requiest'])->middleware('auth')->name('services.shahkarinquiryrequiest');
 
 //ceckout
 Route::get('/checkout/showform/{transactionId}', [CheckoutController::class, 'showForm'])->middleware('auth')->name('checkout.showForm');

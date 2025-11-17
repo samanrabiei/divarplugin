@@ -6,32 +6,15 @@ use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
+
+
     public function shahkarinquiry()
     {
         return view('divar.services.shahkarinquiry');
     }
 
-    public function shahkarinquirydata(Request $request)
+    public function requiest($transicon)
     {
-
-        $request->validate([
-            'phone' => 'required|regex:/^09\d{9}$/',
-            'codemele' => 'required|digits:10',
-        ]);
-        // ساخت یک شناسه‌ی منحصربه‌فرد برای تراکنش
-        $transactionId = uniqid('txn_');
-        $price = '6000';
-        // ذخیره اطلاعات در session
-        session([
-            "transactions.$transactionId" => [
-                'phone' => $request->phone,
-                'codemele' => $request->codemele,
-                'price' =>  $price,
-                'transactions_id' =>  $transactionId,
-
-            ],
-        ]);
-        // ریدایرکت به کنترلر دیگر
-        return redirect()->route('checkout.showForm', ['transactionId' => $transactionId]);
+        dd($transicon);
     }
 }

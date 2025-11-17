@@ -4,7 +4,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="left-content">
-                    <a href="{{ route('divar.index') }}" class="back-btn"><i class="icon feather icon-chevron-right"></i></a>
+                    <a href="{{ url()->previous() }}" class="back-btn"><i class="icon feather icon-chevron-right"></i></a>
                 </div>
                 <div class="mid-content">
                     <h6 class="title">کیف پول</h6>

@@ -19,7 +19,7 @@ class profileController extends Controller
 
         return view('divar.profile.profile', [
             'user' => $user,
-            'wallet' => $data->balance
+            'wallet' => number_format($data->balance)
         ]);
     }
 

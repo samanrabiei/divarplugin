@@ -36,12 +36,14 @@ class ShahkarInquiry extends Component
                 'codemele' => $this->codemele,
                 'price' => $this->price,
                 'transactions_id' => $transactionId,
+                'type' => 'Straight'
             ],
         ]);
 
         // انتقال به صفحه پرداخت
         return redirect()->route('checkout.showForm', ['transactionId' => $transactionId]);
     }
+
 
     public function render()
     {

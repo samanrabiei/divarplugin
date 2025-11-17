@@ -35,7 +35,7 @@ class senmessage extends Controller
         // حذف کل سیشن ها
         // session()->flush();
         // ست کردن یک سیشن با زمان انقضا
-        // session()->flash('message', 'پیام ارسال شد');
+        session()->flash('message', 'پیام ارسال شد');
         // ست کردن پیام با ریداریکت
         return   redirect()->route('blog.index')->with('message', 'پیام ارسال شد');
         // return   redirect()->route('blog.index');

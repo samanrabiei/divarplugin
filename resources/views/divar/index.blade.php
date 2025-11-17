@@ -15,7 +15,9 @@
                 <div class="right-content">
                     <a href="{{ route('profile.profile') }}" class="nav-link active"><i class="icon feather icon-user"></i>
                     </a>
+
                 </div>
+
             </div>
         </div>
     </header>
@@ -26,8 +28,10 @@
     <div class="page-content space-top">
 
         <div class="container p-0">
-
             <div class="dz-tab style-1 tab-fixed">
+                {{-- toast --}}
+                <x-toast.toast />
+                {{-- End toast --}}
                 <div class="tab-slide-effect">
                     <ul class="nav nav-tabs" id="myTab2" role="tablist">
                         <li class="tab-active-indicator" style="width: 90.7188px; transform: translateX(0px);"></li>
@@ -74,6 +78,7 @@
                                             <div class="card-body">
                                                 <p class="card-text"> با این سرویس شماره موبایل طرف مقابل را با کد ملی او
                                                     طبیق دهید تا مطمئن شوید که شماره موبایل متعلق به خود اوست.
+
                                                 </p>
                                             </div>
                                             <div class="card-footer border-0 pt-0">
