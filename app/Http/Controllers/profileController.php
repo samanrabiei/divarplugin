@@ -2,30 +2,51 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Auth;
+
 
 class profileController extends Controller
 {
     public function profile()
     {
         $user = Auth::user();
+        $data = User::find($user['id']);
+        // dd($data->balance);
 
-        return view('divar.profile.profile', compact('user'));
+
+        return view('divar.profile.profile', [
+            'user' => $user,
+            'wallet' => $data->balance
+        ]);
     }
+
     public function wallet(Request $request)
     {
         $user = Auth::user();
 
         $request->validate([
-            'amount' => 'required|numeric|min:1',
+            'amount' => 'required|numeric|min:1000',
         ]);
 
-        $amount = $request->query('amount');
+        $data = [
+            'amount' => $request->amount,
+            'currency' => $request->currency,
+        ];
 
-        // اینجا ریدایرکت ساده به آدرس پرداخت (جایگزین کن)
-        $gatewayUrl = "https://gateway.example.com/pay?amount={$amount}";
+        $transactionId = uniqid('txn_');
 
-        return redirect()->away($gatewayUrl);
+        session([
+            "transactions.$transactionId" => [
+                'price' => $request->amount,
+                'transactions_id' => $transactionId,
+                'type' => 'wallet'
+
+            ],
+        ]);
+
+        return redirect()->route('checkout.showForm', ['transactionId' => $transactionId]);
     }
 }

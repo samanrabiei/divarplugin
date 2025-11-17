@@ -34,7 +34,7 @@
                             <a href="javascript:void(0);" class="item-content item-link" data-bs-toggle="offcanvas"
                                 data-bs-target="#offcanvasLang" aria-controls="offcanvasLang">
                                 <div class="dz-icon-box"><i class="icon feather icon-briefcase"></i></div>
-                                <span>موجودی: {{ $user->balance }} تومان</span>
+                                <span>موجودی: {{ $wallet }} تومان</span>
                             </a>
                         </li>
 
@@ -108,48 +108,41 @@
         </div>
         <div class="offcanvas-body small">
             <div class="dz-list">
-                <ul class="mb-2 confirm-lang">
-                    <li data-lang="Indian">
-                        <a href="javascript:void(0);" class="item-content py-2 item-link">
-                            <div class="media media-30 me-3"><img src="assets/images/flags/1m.svg" alt="/"></div>
+                <ul class="mb-2 confirm-lang" id="amountList">
+                    <li data-amount="20000">
+                        <a href="#" class="item-content py-2 item-link">
+                            <div class="media media-30 me-3"><img src="assets/images/flags/1m.svg"></div>
                             <div class="dz-inner"><span class="title">20 هزار تومان</span></div>
                         </a>
                     </li>
-                    <li data-lang="English">
-                        <a href="javascript:void(0);" class="item-content py-2 item-link">
-                            <div class="media media-30 me-3"><img src="assets/images/flags/2m.svg" alt="/"></div>
+                    <li data-amount="50000">
+                        <a href="#" class="item-content py-2 item-link">
+                            <div class="media media-30 me-3"><img src="assets/images/flags/2m.svg"></div>
                             <div class="dz-inner"><span class="title">50 هزار تومان</span></div>
                         </a>
                     </li>
-                    <li data-lang="German">
-                        <a href="javascript:void(0);" class="item-content py-2 item-link">
-                            <div class="media media-30 me-3"><img src="assets/images/flags/3m.svg" alt="/">
-                            </div>
+                    <li data-amount="100000">
+                        <a href="#" class="item-content py-2 item-link">
+                            <div class="media media-30 me-3"><img src="assets/images/flags/3m.svg"></div>
                             <div class="dz-inner"><span class="title">100 هزار تومان</span></div>
                         </a>
                     </li>
-                    <li data-lang="Italian">
-                        <a href="javascript:void(0);" class="item-content py-2 item-link">
-                            <div class="media media-30 me-3"><img src="assets/images/flags/4.svg" alt="/"></div>
-                            <div class="dz-inner"><span class="title">200 هزار تومان</span></div>
-                        </a>
-                    </li>
-                    <li class="border-0" data-lang="Spanish">
-                        <a href="javascript:void(0);" class="item-content py-2 item-link">
-                            <div class="media media-30 me-3"><img src="assets/images/flags/5.svg" alt="/">
-                            </div>
-                            <div class="dz-inner"><span class="title">500 هزار تومان</span></div>
-                        </a>
-                    </li>
-                    <li class="border-0" data-lang="Spanish">
-                        <a href="javascript:void(0);" class="item-content py-2 item-link">
-                            <div class="media media-30 me-3"><img src="assets/images/flags/6.svg" alt="/">
-                            </div>
-                            <div class="dz-inner"><span class="title">1 میلیون تومان </span></div>
-                        </a>
-                    </li>
                 </ul>
+
+                <form id="sendAmountForm" action="{{ route('profile.wallet.post') }}" method="POST" style="display:none;">
+                    @csrf
+                    <input type="hidden" name="amount" id="amountInput">
+                </form>
             </div>
         </div>
     </div>
+    <script>
+        document.querySelectorAll('#amountList li').forEach(function(item) {
+            item.addEventListener('click', function() {
+                let amount = this.getAttribute('data-amount');
+                document.getElementById('amountInput').value = amount;
+                document.getElementById('sendAmountForm').submit();
+            });
+        });
+    </script>
 @endsection
