@@ -21,26 +21,50 @@ class InvoiceController extends Controller
 
     public function pay(Request $request)
     {
-        $gateway = 'zibal';
-        // اعتبارسنجی ساده (اختیاری اما پیشنهاد می‌شود)
-        $request->validate([
-            'price' => 'required|numeric|min:0.01',
-            'transactions_id' => 'required',
-        ]);
 
-        $invoice = (new Invoice)->amount($request->price);
-        return Payment::via($gateway)->purchase($invoice, function ($driver, $transactionId) use ($request, $gateway) {
-            // دقت کن که بین "payment." و $transactionId فاصله نداشته باشه
-            session([
-                "payment.$transactionId" => [
-                    'transionpayid' => $transactionId,
-                    'transactions_id' => $request->transactions_id,
-                    'amount' => $request->price,
-                    'gateway' => $gateway,
-                    'type' =>  $request->type,
-                ],
+        if ($request['payment_method'] == 'wallet') {
+
+            $user = Auth::user();
+            $data = User::find($user['id']);
+
+            if ($data->balance < $request->price) {
+                session()->flash('error', [
+                    'title' => ' موجودی کافی نیست',
+                    'message' => 'لطفا موجودی کیف پول خود را افزایش دهید.'
+                ]);
+                return redirect()->route('profile.profile');
+            }
+
+            $data->withdraw($request->price);
+
+            session()->flash('success', [
+                'title' => 'انجام شد',
+                'message' => 'پرداخت با موفقیت از طریق کیف پول انجام شد.'
             ]);
-        })->pay()->render();
+            return redirect()->route('services.shahkarinquiryrequiest', ['transicon' => $request->transactions_id]);
+        } else {
+
+            $gateway = 'zibal';
+            // اعتبارسنجی ساده (اختیاری اما پیشنهاد می‌شود)
+            $request->validate([
+                'price' => 'required|numeric|min:0.01',
+                'transactions_id' => 'required',
+            ]);
+
+            $invoice = (new Invoice)->amount($request->price);
+            return Payment::via($gateway)->purchase($invoice, function ($driver, $transactionId) use ($request, $gateway) {
+                // دقت کن که بین "payment." و $transactionId فاصله نداشته باشه
+                session([
+                    "payment.$transactionId" => [
+                        'transionpayid' => $transactionId,
+                        'transactions_id' => $request->transactions_id,
+                        'amount' => $request->price,
+                        'gateway' => $gateway,
+                        'type' =>  $request->type,
+                    ],
+                ]);
+            })->pay()->render();
+        }
     }
 
 

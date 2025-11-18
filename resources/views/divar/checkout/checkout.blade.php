@@ -1,5 +1,10 @@
 @extends('webapp_layout.master')
 @section('content')
+    <style>
+        .accordion.dz-accordion .accordion-item .accordion-header .accordion-button:after {
+            display: none !important;
+        }
+    </style>
     <!-- Header -->
     <header class="header header-fixed">
         <div class="container">
@@ -17,19 +22,15 @@
             </div>
         </div>
     </header>
-    <!-- Header -->
-    @if (session('error'))
-        <div class="alert alert-danger">{{ session('error') }}</div>
-    @endif
-    @if (session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
-
+    {{-- toast --}}
+    <x-toast.toast />
+    {{-- End toast --}}
     <form action="{{ route('invoice.pay') }}" method="POST">
         @csrf
         <!-- Page Content Start -->
         <div class="page-content space-top p-b50">
             <div class="container">
+
                 <div class="accordion dz-accordion accordion-full" id="accordionExample">
 
                     <div class="accordion-item">
@@ -45,33 +46,78 @@
 
                             </button>
                         </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <small class="font-w600 mb-2 text-dark">با انتخاب یکی از درگاه های زیر و از طریق تمامی کارت
-                                    های
-                                    عضو شبکه شتاب</small>
-                                <!-- Card Select -->
-                                <div class="d-flex align-items-center mb-3">
 
-                                    <!-- Card Select -->
-                                    <div class="short-tag style-4" role="group" aria-label="radio toggle button">
-                                        <div class="clearfix">
-                                            <input type="radio" class="btn-check" name="zarinpall" id="getway"
-                                                checked="">
-                                            <label class="btn ms-3 mb-0 tag-btn" for="btnradio1">
-                                                <img src="{{ asset('assets/images/payment/zarinpall.png') }}"
-                                                    alt="">
-                                            </label>
+                        <div class="accordion-body">
+                            <small class="font-w600 mb-2 text-dark">با انتخاب یکی از درگاه های زیر و از طریق تمامی کارت
+                                های
+                                عضو شبکه شتاب</small>
 
-                                        </div>
-
-
+                            <!-- درگاه زرین پال -->
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="short-tag style-4" role="group" aria-label="radio toggle button">
+                                    <div class="clearfix">
+                                        <input type="radio" class="btn-check" name="payment_method" id="gateway_zarinpal"
+                                            value="zarinpal" checked>
+                                        <label class="btn ms-3 mb-0 tag-btn" for="gateway_zarinpal">
+                                            <img src="{{ asset('assets/images/payment/zarinpall.png') }}" alt="">
+                                        </label>
                                     </div>
                                 </div>
+                            </div>
 
+                        </div>
+                        <?php if ($transaction['type'] != 'wallet' ): ?>
+                        <div class="accordion-item">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingFive">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                        <span class="media media-25 me-3">
+                                            <img src="{{ asset('assets/images/icons/wallet.png') }}  " alt="/">
+                                        </span>
+                                        کیف پول
+                                    </button>
+                                </h2>
+
+
+                                <div class="accordion-body pt-0">
+
+                                    <!-- نمایش موجودی کیف پول -->
+                                    <div
+                                        class="alert  bg-body-tertiary solid  d-flex justify-content-between align-items-center mb-3">
+                                        <strong>موجودی کیف پول:</strong>
+                                        <span class="fw-bold text-black"> {{ $wallet }} تومان</span>
+                                    </div>
+
+                                    <!-- گزینه پرداخت با کیف پول -->
+                                    <div class="d-flex align-items-center">
+                                        <div class="short-tag style-4" role="group" aria-label="radio toggle button">
+                                            <div class="clearfix">
+                                                <input type="radio" class="btn-check" name="payment_method"
+                                                    id="gateway_wallet" value="wallet" <?php
+                                                    if ($wallet >= $transaction['price']) {
+                                                        echo 'checked';
+                                                    } else {
+                                                        echo 'disabled';
+                                                    }
+                                                    ?>>
+                                                <label class="btn ms-3 mb-0 tag-btn" for="gateway_wallet">
+                                                    <img src="{{ asset('assets/images/bank/wallet.png') }}" alt="/"
+                                                        style="width:40px;">
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <span class="fw-bold ms-3"> کیف پول</span>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
+                        <?php endif; ?>
+                        <!-- کیف پول -->
+
+
+
                     </div>
 
                 </div>
