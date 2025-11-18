@@ -11,16 +11,16 @@ use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
-    
-    public function showForm($transactionId)
+
+    public function showForm($serviceId)
     {
 
         $user = Auth::user();
         $data = User::find($user['id']);
 
-        $transaction = session("transactions.$transactionId");
+        $service = session("service.$serviceId");
         // dd($transaction);
-        if (!$transaction) {
+        if (!$service) {
             abort(404, 'تراکنش یافت نشد.');
         }
 
@@ -28,7 +28,7 @@ class CheckoutController extends Controller
         // dd($data->balance);
 
         return view('divar.checkout.checkout', [
-            'transaction' =>  $transaction,
+            'service' =>  $service,
             'wallet' => number_format($data->balance)
         ]);
     }

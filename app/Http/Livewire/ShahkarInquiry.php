@@ -27,21 +27,21 @@ class ShahkarInquiry extends Component
         $this->validate();
 
         // ساخت شناسه‌ی منحصربه‌فرد برای تراکنش
-        $transactionId = uniqid('txn_');
+        $serviceId = uniqid('txn_');
 
         // ذخیره اطلاعات در session
         session([
-            "transactions.$transactionId" => [
+            "service.$serviceId" => [
                 'phone' => $this->phone,
                 'codemele' => $this->codemele,
                 'price' => $this->price,
-                'transactions_id' => $transactionId,
-                'type' => 'Straight'
+                'serviceId' => $serviceId,
+                'type' => 'shahkar'
             ],
         ]);
 
         // انتقال به صفحه پرداخت
-        return redirect()->route('checkout.showForm', ['transactionId' => $transactionId]);
+        return redirect()->route('checkout.showForm', ['serviceId' => $serviceId]);
     }
 
 

@@ -14,10 +14,7 @@ use Illuminate\Support\Facades\Auth;
 
 class InvoiceController extends Controller
 {
-    public function create()
-    {
-        return view('invoice.create');
-    }
+
 
     public function pay(Request $request)
     {
@@ -81,11 +78,11 @@ class InvoiceController extends Controller
 
             if ($pay_session['amount'] * 10 == $amount) {
                 // پرداخت موفق بود
-                $id_transction =  $pay_session['transactions_id'];
+                $serviceId =  $pay_session['transactions_id'];
                 // session()->forget("payment.$trackId");
                 //دریافت اطلاعات سفارش 
-                $transactions = session()->get("transactions.$id_transction");
-                if ($transactions['type'] == 'wallet') {
+                $service = session()->get("service.$serviceId");
+                if ($service['type'] == 'wallet') {
                     $id =  Auth::id();
                     $user = User::find($id);
                     $user->deposit($pay_session['amount']);
@@ -96,7 +93,7 @@ class InvoiceController extends Controller
                     ]);
                     return redirect()->route('profile.profile');
                 } else {
-                    return redirect()->route('services.shahkarinquiryrequiest', ['transicon' =>  $transactions['transactions_id']]);
+                    return redirect()->route('services.shahkarinquiryrequiest', ['transicon' =>  $service['serviceId']]);
                 }
             } else {
                 session()->flash('error', [

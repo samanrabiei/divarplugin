@@ -66,7 +66,7 @@
                             </div>
 
                         </div>
-                        <?php if ($transaction['type'] != 'wallet' ): ?>
+                        <?php if ($service['type'] != 'wallet' ): ?>
                         <div class="accordion-item">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingFive">
@@ -95,7 +95,7 @@
                                             <div class="clearfix">
                                                 <input type="radio" class="btn-check" name="payment_method"
                                                     id="gateway_wallet" value="wallet" <?php
-                                                    if ($wallet >= $transaction['price']) {
+                                                    if ($wallet >= $service['price']) {
                                                         echo 'checked';
                                                     } else {
                                                         echo 'disabled';
@@ -127,7 +127,7 @@
                     <ul>
                         <li>
                             <span class="name">مبلغ :</span>
-                            <span class="font-w500"> {{ number_format($transaction['price']) }} تومان</span>
+                            <span class="font-w500"> {{ number_format($service['price']) }} تومان</span>
                         </li>
                         <li>
                             <span class="name">تخفیف :</span>
@@ -144,7 +144,7 @@
                         <li class="divider style-2 mt-0 pb-0"></li>
                         <li>
                             <span class="name">مبلغ کل</span>
-                            <h4 class="price">{{ number_format($transaction['price']) }} تومان</h4>
+                            <h4 class="price">{{ number_format($service['price']) }} تومان</h4>
                         </li>
                     </ul>
                 </div>
@@ -158,15 +158,15 @@
                     <div class="price-area">
                         <span> مبلغ پرداختی </span>
                         <h5 class="price text-secondary">
-                            {{ number_format($transaction['price']) }} تومان
+                            {{ number_format($service['price']) }} تومان
                         </h5>
                     </div>
 
 
 
 
-                    <input type="hidden" name="price" value="{{ $transaction['price'] }}">
-                    <input type="hidden" name="transactions_id" value="{{ $transaction['transactions_id'] }}">
+                    <input type="hidden" name="price" value="{{ $service['price'] }}">
+                    <input type="hidden" name="transactions_id" value="{{ $service['serviceId'] }}">
 
                     <button type="submit" class="btn btn-primary w-100">پرداخت</button>
 

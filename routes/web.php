@@ -98,7 +98,7 @@ Route::get('/services/shahkarinquiry', [ServiceController::class, 'shahkarinquir
 Route::get('/services/requiest/{transicon}', [ServiceController::class, 'requiest'])->middleware('auth')->name('services.shahkarinquiryrequiest');
 
 //ceckout
-Route::get('/checkout/showform/{transactionId}', [CheckoutController::class, 'showForm'])->middleware('auth')->name('checkout.showForm');
+Route::get('/checkout/showform/{serviceId}', [CheckoutController::class, 'showForm'])->middleware('auth')->name('checkout.showForm');
 Route::get('/checkout/payement', [CheckoutController::class, 'payement'])->middleware('auth')->name('checkout.payement');
 
 

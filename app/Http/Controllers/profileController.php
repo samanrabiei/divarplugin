@@ -36,17 +36,17 @@ class profileController extends Controller
             'currency' => $request->currency,
         ];
 
-        $transactionId = uniqid('txn_');
+        $serviceId = uniqid('txn_');
 
         session([
-            "transactions.$transactionId" => [
+            "service.$serviceId" => [
                 'price' => $request->amount,
-                'transactions_id' => $transactionId,
+                'serviceId' => $serviceId,
                 'type' => 'wallet'
 
             ],
         ]);
 
-        return redirect()->route('checkout.showForm', ['transactionId' => $transactionId]);
+        return redirect()->route('checkout.showForm', ['serviceId' => $serviceId]);
     }
 }
