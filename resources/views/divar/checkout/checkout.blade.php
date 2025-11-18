@@ -86,7 +86,7 @@
                                     <div
                                         class="alert  bg-body-tertiary solid  d-flex justify-content-between align-items-center mb-3">
                                         <strong>موجودی کیف پول:</strong>
-                                        <span class="fw-bold text-black"> {{ $wallet }} تومان</span>
+                                        <span class="fw-bold text-black"> {{ number_format($wallet) }} تومان</span>
                                     </div>
 
                                     <!-- گزینه پرداخت با کیف پول -->
@@ -107,7 +107,7 @@
                                                 </label>
                                             </div>
                                         </div>
-                                        <span class="fw-bold ms-3"> کیف پول</span>
+                                        <span class="fw-bold ms-3">کیف پول</span>
                                     </div>
 
                                 </div>

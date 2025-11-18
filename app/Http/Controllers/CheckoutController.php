@@ -29,7 +29,7 @@ class CheckoutController extends Controller
 
         return view('divar.checkout.checkout', [
             'service' =>  $service,
-            'wallet' => number_format($data->balance)
+            'wallet' => $data->balance
         ]);
     }
 }
