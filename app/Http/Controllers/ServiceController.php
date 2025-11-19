@@ -7,14 +7,21 @@ use Illuminate\Http\Request;
 class ServiceController extends Controller
 {
 
+    public function requiest($transicon)
+    {
+        $date = session()->all();
+
+        $service = session('service')[$transicon] ?? null;
+
+        // dd($transicon, $date, $txn);
+        return \App\Services\ServiceDispatcher::dispatch(
+            $service['type'],
+            $service
+        );
+    }
 
     public function shahkarinquiry()
     {
         return view('divar.services.shahkarinquiry');
-    }
-
-    public function requiest($transicon)
-    {
-        dd($transicon);
     }
 }
