@@ -13,68 +13,52 @@ use Illuminate\Support\Facades\Mail;
 
 class Authentication extends Controller
 {
-    public function formregister(Request $request)
-    {
-        return view('divar.auth.signup');
-    }
 
-    public function register(Request $request)
-    {
-        $request->validate([
-            'gavanin' => 'required|accepted',
-            'username' => 'required',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:3|confirmed',
-        ]);
-        $user = User::create([
-            'name' => $request->username,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-        ]);
-        // Logic for user registration
-        redirect()->route('formlogin');
-    }
-
-    public function login(Request $request)
+    public function admin()
     {
         // چک کردن اگر کاربر وارد بود به این لینک ریدارکت شود
         if (auth()->check()) {
-            return redirect()->route('blog.index');
+            return redirect()->route('formlogin');
         }
-        return view('divar.auth.login');
+        return view('admin.auth.signin');
     }
+
     public function submitlogin(Request $request)
     {
-        $data =  $request->validate([
-            'gavanin' => 'required|accepted',
-            'email' => 'required|string|email|exists:users',
+        $data = $request->validate([
+            'email' => 'required|string|email|exists:users,email',
             'password' => 'required|string|min:3',
         ]);
 
-        $user = user::where('email', $data['email'])->first();
+        $user = User::where('email', $data['email'])->first();
+
+        // اگر کاربر وجود نداشت
         if (!$user) {
-            return back()->withErrors(['email' => 'Invalid credentials']);
+            return back()->withErrors(['email' => 'اطلاعات ورود اشتباه است.']);
         }
-        if ($user && Hash::check($request->password, $user->password)) {
-            // رمز عبور درست است، می‌تونی کاربر را لاگین کنی
+
+        // بررسی رمز عبور با Hash::check
+        if (Hash::check($data['password'], $user->password) and $user->is_admin === 1) {
+
             Auth::login($user);
-            return redirect()->route('blog.index');
+            return redirect()->route('admin.dashboard');
         } else {
-            // رمز اشتباهه یا کاربر پیدا نشد
+
             return back()->withErrors(['email' => 'اطلاعات ورود اشتباه است.']);
         }
     }
+
     public function logout(Request $request)
     {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return  redirect()->route('blog.index');
+        return  redirect()->route('admin');
     }
 
     public function resetPassword(Request $request)
     {
-        return view('auth.reset');
+        return view('admin.auth.reset');
     }
 
     public function resetPasswordpost(Request $request)
@@ -104,7 +88,7 @@ class Authentication extends Controller
     public function NewPassword($token)
     {
 
-        return view('auth.resetpassword', compact('token'));
+        return view('admin.auth.resetpassword', compact('token'));
     }
 
     public function SubmitNewPassword(Request $request)
@@ -124,7 +108,7 @@ class Authentication extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
         DB::table('password_resets')->where('email', $updatepasword->email)->delete();
-        return redirect()->route('login')->with('success', 'رمز عبور شما با موفقیت تغییر کرد.');
+        return redirect()->route('formlogin')->with('success', 'رمز عبور شما با موفقیت تغییر کرد.');
     }
 
     public function verifyEmail(Request $request)

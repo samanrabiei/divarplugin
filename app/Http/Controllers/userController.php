@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 use App\Models\profile;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class userController extends Controller
 {
@@ -15,8 +16,8 @@ class userController extends Controller
 
         // $profile = profile::find('1');
         // dd($profile->user);
-
-        $user = User::find(5);
-        dd($user->role);
+        $id =  Auth::id();
+        $user = User::find($id);
+        dd($user['is_admin']);
     }
 }
