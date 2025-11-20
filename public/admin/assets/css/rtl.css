@@ -1,0 +1,3 @@
+.sidebar-menu li.dropdown>a::after {
+    transform: rotate(180deg) !important;
+}

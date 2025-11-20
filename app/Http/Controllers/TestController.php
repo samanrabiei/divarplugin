@@ -172,11 +172,21 @@ class TestController extends Controller
         // // $user->withdraw(900); // برداشت
         // // نمایش موجودی کیف پول
         // dd($user->balance, $id);
-        session()->flash('success', [
-            'title' => 'موفق!',
-            'message' => 'عملیات با موفقیت انجام شد'
-        ]);
+        // session()->flash('success', [
+        //     'title' => 'موفق!',
+        //     'message' => 'عملیات با موفقیت انجام شد'
+        // ]);
 
-        return view('test.test');
+        // return view('test.test');
+        // session()->flash('error', [
+        //     'title' => 'انجام نشد',
+        //     'message' => 'پرداخت انجام نشد لطفا مجددا امتحان  نمایید.'
+        // ]);
+
+        // return redirect()->route('profile.profile');
+
+        // $date = session()->all();
+        // dd($date);
+        return view('admin.dashboard.index');
     }
 }
