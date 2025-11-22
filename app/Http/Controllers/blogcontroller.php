@@ -98,9 +98,4 @@ class blogcontroller extends Controller
         $blog->delete();
         return redirect()->route('blog.index');
     }
-
-    public function nvshte()
-    {
-        return 'test';
-    }
 }

@@ -17,6 +17,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Admin\AdminCntroller;
 use App\Http\Controllers\KenarOauthController;
 use App\Http\Controllers\Auth\OtpLoginController;
+use App\Http\Controllers\Admin\CustommerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,7 +33,12 @@ Route::prefix('admin')->name('admin.')->middleware('Modirate')->group(function (
     Route::get('/dashboard', [AdminCntroller::class, 'index'])->name('dashboard');
 });
 
+Route::prefix('customers')->name('customers.')->middleware('Modirate')->group(function () {
+    Route::get('/list', [CustommerController::class, 'index'])->name('list');
+    Route::get('/show/{customer}', [CustommerController::class, 'show'])->name('show');
+});
 
+// test
 Route::prefix('blog')->name('blog.')->middleware('Modirate')->group(function () {
     Route::get('/', [BlogController::class, 'index'])->name('index');
     Route::get('/create', [BlogController::class, 'create'])->name('create');
@@ -43,12 +49,12 @@ Route::prefix('blog')->name('blog.')->middleware('Modirate')->group(function () 
     Route::delete('/{blog}', [BlogController::class, 'delete'])->name('destroy');
 });
 
-// Route::get('/category', [categorycontroller::class, 'index'])->name('category.index');
-// Route::get('/category/create', [categorycontroller::class, 'create'])->name('category.create');
-// Route::get('/category/{category}/edit', [categorycontroller::class, 'edit'])->name('category.edit');
-// Route::post('/category/story', [categorycontroller::class, 'story'])->name('category.story');
-// Route::put('/category/{category}', [categorycontroller::class, 'update'])->name('category.update');
-// Route::delete('/category/{category}', [categorycontroller::class, 'destroy'])->name('category.destroy');
+Route::get('/category', [categorycontroller::class, 'index'])->name('category.index');
+Route::get('/category/create', [categorycontroller::class, 'create'])->name('category.create');
+Route::get('/category/{category}/edit', [categorycontroller::class, 'edit'])->name('category.edit');
+Route::post('/category/story', [categorycontroller::class, 'story'])->name('category.story');
+Route::put('/category/{category}', [categorycontroller::class, 'update'])->name('category.update');
+Route::delete('/category/{category}', [categorycontroller::class, 'destroy'])->name('category.destroy');
 
 // Route::get('/sendmessage', [senmessage::class, 'index'])->name('senmessage.index');
 // Route::get('/seesion', [senmessage::class, 'seesion'])->name('senmessage.seesion');
