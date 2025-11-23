@@ -11,7 +11,7 @@ class CustommerController extends Controller
 {
     public function index()
     {
-        $customers = Customers::where('is_admin', 0)->with('wallet')->paginate(10);
+        $customers = Customers::where('is_admin', 0)->with('wallet')->get();
 
         return view('admin.custommers.usersList', compact('customers'));
     }

@@ -27,16 +27,18 @@
     <script src="{{ asset('admin/assets/js/lib/jquery-jvectormap-world-mill-en.js') }}"></script>
 
     <!-- Popup js -->
-    {{-- <script src="{{ asset('admin/assets/js/lib/magnifc-popup.min.js') }}"></script> --}}
+    <script src="{{ asset('admin/assets/js/lib/magnifc-popup.min.js') }}"></script>
     <!-- Slick Slider js -->
-    {{-- <script src="{{ asset('admin/assets/js/lib/slick.min.js') }}"></script> --}}
+    <script src="{{ asset('admin/assets/js/lib/slick.min.js') }}"></script>
     <!-- prism js -->
-    {{-- <script src="{{ asset('admin/assets/js/lib/prism.js') }}"></script> --}}
+    <script src="{{ asset('admin/assets/js/lib/prism.js') }}"></script>
     <!-- file upload js -->
-    {{-- <script src="{{ asset('admin/assets/js/lib/file-upload.js') }}"></script> --}}
+    <script src="{{ asset('admin/assets/js/lib/file-upload.js') }}"></script>
     <!-- audioplayer -->
-    {{-- <script src="{{ asset('admin/assets/js/lib/audioplayer.js') }}"></script> --}}
-
+    <script src="{{ asset('admin/assets/js/lib/audioplayer.js') }}"></script>
+    <script>
+        let table = new DataTable('#dataTable');
+    </script>
     <!-- main js -->
     <script src="{{ asset('admin/assets/js/app.js') }}"></script>
 

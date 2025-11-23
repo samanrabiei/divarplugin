@@ -1,0 +1,4 @@
+table.dataTable thead>tr>th.dt-orderable-asc,
+table.dataTable thead>tr>th.dt-orderable-desc {
+    text-align: right !important;
+}

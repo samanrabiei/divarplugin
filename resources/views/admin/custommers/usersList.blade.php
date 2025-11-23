@@ -8,46 +8,18 @@
         });
     </script>';
 @endphp
-
 @section('content')
     <div class="card h-100 p-0 radius-12">
-        <div
-            class="card-header border-bottom bg-base py-16 px-24 d-flex align-items-center flex-wrap gap-3 justify-content-between">
-            <div class="d-flex align-items-center flex-wrap gap-3">
-                <span class="text-md fw-medium text-secondary-light mb-0">نمایش</span>
-                <select class="form-select form-select-sm w-auto ps-12 py-6 radius-12 h-40-px">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-                </select>
-                <form class="navbar-search">
-                    <input type="text" class="bg-base h-40-px w-auto" name="search" placeholder="Search">
-                    <iconify-icon icon="ion:search-outline" class="icon"></iconify-icon>
-                </form>
-                <select class="form-select form-select-sm w-auto ps-12 py-6 radius-12 h-40-px">
-                    <option>وضعیت ها</option>
-                    <option>فعال</option>
-                    <option>غیرفعال</option>
-                </select>
+
+        <div class="card basic-data-table">
+            <div class="card-header">
+                <h5 class="card-title mb-0">لیست مشتریان</h5>
             </div>
-            <a href="route('addUser') }}"
-                class="btn btn-primary text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center gap-2">
-                <iconify-icon icon="ic:baseline-plus" class="icon text-xl line-height-1"></iconify-icon>
-                افزودن مشتری جدید
-            </a>
-        </div>
-        <div class="card-body p-24">
-            <div class="table-responsive scroll-sm">
-                <table class="table bordered-table sm-table mb-0">
+            <div class="card-body">
+                <table class="table bordered-table mb-0" id="dataTable" data-page-length='10'>
                     <thead>
                         <tr>
+
                             <th scope="col">
                                 <div class="d-flex align-items-center gap-10">
                                     <div class="form-check style-check d-flex align-items-center">
@@ -110,12 +82,10 @@
                             </tr>
                         @endforeach
 
-
-
                     </tbody>
                 </table>
             </div>
-            {{ $customers->links('vendor.pagination.custom') }}
         </div>
+
     </div>
 @endsection
