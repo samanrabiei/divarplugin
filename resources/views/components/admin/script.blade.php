@@ -2,6 +2,18 @@
     <script src="{{ asset('admin/assets/js/lib/jquery-3.7.1.min.js') }}"></script>
     <!-- Bootstrap js -->
     <script src="{{ asset('admin/assets/js/lib/bootstrap.bundle.min.js') }}"></script>
+    {{-- toast --}}
+    <script src="{{ asset('admin/assets/toast/toast-plugin-min.js') }}"></script>
+    <script>
+        @if (session('toast') && is_array(session('toast')))
+            $.toast({
+                title: "{{ session('toast')['title'] }}",
+                message: "{{ session('toast')['message'] }}",
+                type: "{{ session('toast')['type'] }}",
+                duration: "{{ session('toast')['time'] }}"
+            });
+        @endif
+    </script>
     <!-- Apex Chart js -->
     {{-- <script src="{{ asset('admin/assets/js/lib/apexcharts.min.js') }}"></script> --}}
     <!-- Data Table js -->
@@ -13,6 +25,7 @@
     <!-- Vector Map js -->
     <script src="{{ asset('admin/assets/js/lib/jquery-jvectormap-2.0.5.min.js') }}"></script>
     <script src="{{ asset('admin/assets/js/lib/jquery-jvectormap-world-mill-en.js') }}"></script>
+
     <!-- Popup js -->
     {{-- <script src="{{ asset('admin/assets/js/lib/magnifc-popup.min.js') }}"></script> --}}
     <!-- Slick Slider js -->

@@ -34,4 +34,6 @@
     <!-- main css -->
     <link rel="stylesheet" href="{{ asset('admin/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/css/rtl.css') }}">
+    {{-- style --}}
+    <link rel="stylesheet" href="{{ asset('admin/assets/toast/styles.css') }}">
 </head>
