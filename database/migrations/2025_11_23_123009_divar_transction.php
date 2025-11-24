@@ -11,11 +11,11 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('transactions_divar', function (Blueprint $table) {
+        Schema::create('divar_transactions', function (Blueprint $table) {
             $table->id(); // id
-            $table->bigIncrements('transaction_id'); // شناسه تراکنش
+            $table->bigInteger('transaction_id')->unsigned()->unique();
             $table->decimal('profit', 15, 0); // سود
             $table->decimal('amount', 15, 0); // مبلغ پرداختی
             $table->string('service_shnase')->unique();; // شناسه سرویس
@@ -23,7 +23,12 @@ return new class extends Migration
         });
     }
 
-    public function down(): void
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
     {
         Schema::dropIfExists('transactions_divar');
     }

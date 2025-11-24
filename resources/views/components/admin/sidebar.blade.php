@@ -42,8 +42,9 @@
                 </a>
                 <ul class="sidebar-submenu">
                     <li>
-                        <a href="'invoiceList') }}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                            List</a>
+                        <a href="{{ route('transactions.index') }} "><i
+                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
+                            لیست تراکنش ها</a>
                     </li>
                     <li>
                         <a href="'invoicePreview') }}"><i

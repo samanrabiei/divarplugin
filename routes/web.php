@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\AdminCntroller;
 use App\Http\Controllers\KenarOauthController;
 use App\Http\Controllers\Auth\OtpLoginController;
 use App\Http\Controllers\Admin\CustommerController;
+use App\Http\Controllers\Admin\DivarTransactionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,6 +39,11 @@ Route::prefix('customers')->name('customers.')->middleware('Modirate')->group(fu
     Route::get('/show/{customer}', [CustommerController::class, 'show'])->name('show');
 });
 
+Route::prefix('transactions')->name('transactions.')->middleware('Modirate')->group(function () {
+    Route::get('/', [DivarTransactionController::class, 'index'])->name('index');
+    Route::get('/create', [DivarTransactionController::class, 'create'])->name('transactions.create');
+    Route::post('/store', [DivarTransactionController::class, 'store'])->name('transactions.store');
+});
 // test
 Route::prefix('blog')->name('blog.')->middleware('Modirate')->group(function () {
     Route::get('/', [BlogController::class, 'index'])->name('index');

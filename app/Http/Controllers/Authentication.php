@@ -18,7 +18,7 @@ class Authentication extends Controller
     {
         // چک کردن اگر کاربر وارد بود به این لینک ریدارکت شود
         if (auth()->check()) {
-            return redirect()->route('formlogin');
+            return redirect()->route('admin.dashboard');
         }
         return view('admin.auth.signin');
     }
