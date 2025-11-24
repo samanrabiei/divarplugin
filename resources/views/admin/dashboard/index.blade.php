@@ -25,11 +25,11 @@
 
                             <div>
                                 <span class="mb-2 fw-medium text-secondary-light text-md">کل مشتریان </span>
-                                <h6 class="fw-semibold my-1">5000</h6>
-                                <p class="text-sm mb-0">Increase by
-                                    <span
-                                        class="bg-success-focus px-1 rounded-2 fw-medium text-success-main text-sm">+200</span>
-                                    this week
+                                <h6 class="fw-semibold my-1">{{ $customers }}</h6>
+                                <p class="text-sm mb-0">تعداد کل مشتریان
+                                    <span class="bg-success-focus px-1 rounded-2 fw-medium text-success-main text-sm">
+                                        ثبت نام </span>
+                                    شده
                                 </p>
                             </div>
                         </div>
@@ -56,11 +56,11 @@
 
                             <div>
                                 <span class="mb-2 fw-medium text-secondary-light text-md">موجودی کیف پول ها </span>
-                                <h6 class="fw-semibold my-1">15,000</h6>
-                                <p class="text-sm mb-0">Increase by
-                                    <span
-                                        class="bg-danger-focus px-1 rounded-2 fw-medium text-danger-main text-sm">-200</span>
-                                    this week
+                                <h6 class="fw-semibold my-1">{{ $balance }} تومان</h6>
+                                <p class="text-sm mb-0"> موجودی
+                                    <span class="bg-danger-focus px-1 rounded-2 fw-medium text-danger-main text-sm">کیف
+                                        پول</span>
+                                    کاربران
                                 </p>
                             </div>
                         </div>
