@@ -37,7 +37,8 @@
         document.querySelector("#toast-message h4").innerText = "{{ session('info')['title'] }}";
     @endif
 </script>
-
+{{-- palak --}}
+<script src="{{ asset('assets/palak/script.js') }}"></script><!-- toast -->
 </body>
 
 </html>
