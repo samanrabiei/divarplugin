@@ -1,0 +1,156 @@
+.plate-form {
+    background: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: auto;
+}
+
+.form-control-inline {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+}
+
+.plate-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    direction: ltr;
+}
+
+.plate-input {
+    width: 100%;
+    text-align: center;
+}
+
+.plate-letter {
+    width: 15% !important;
+    text-align: center;
+}
+
+.iran-label {
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.palak-parcham {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px 5px 0 0;
+}
+
+.plate-section {
+    background-color: white;
+}
+
+.border-section {
+    border: 3px solid black;
+    border-radius: 8px;
+    padding-right: 15px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.palak_irancode {
+    display: inline-block;
+    text-align: center;
+}
+
+.countainer {
+    width: 500px;
+    height: 100px;
+    background-color: white;
+    border: 4px solid black;
+    border-radius: 8px
+}
+
+.countainer div {
+    float: left;
+}
+
+.clearBoth {
+    clear: both;
+}
+
+.left {
+    width: 15%;
+    height: 100%;
+    background: darkblue;
+}
+
+.center {
+    direction: rtl;
+    width: 65%;
+    height: 100%;
+    border-right: 3px solid black;
+    border-left: 3px solid black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    /* فاصله بین آیتم‌ها */
+    font-size: 70px;
+    font-weight: bold;
+}
+
+.title {
+    text-align: center;
+    /*   letter-spacing:10px; */
+}
+
+.city {
+    /*   background-color:yellow; */
+    height: 80px;
+    width: 100%;
+    font-weight: 900;
+    font-size: 70px;
+    text-align: center;
+}
+
+.right {}
+
+.flag {
+    width: 50px;
+    height: 30px;
+    margin: auto;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.green {
+    width: 50px;
+    height: 10px;
+    background-color: green;
+}
+
+.white {
+    width: 50px;
+    height: 10px;
+    background-color: white;
+}
+
+.red {
+    width: 50px;
+    height: 10px;
+    background-color: red;
+}
+
+.letters {
+    margin-left: 10px;
+    margin-top: 10px;
+    font-size: 17px;
+    font-weight: 500;
+    color: white;
+}
+
+.continer {
+    width: 30%;
+}
