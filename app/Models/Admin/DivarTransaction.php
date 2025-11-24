@@ -17,6 +17,7 @@ class DivarTransaction extends Model
         'profit',
         'amount',
         'service_shnase',
+        'user_id',
     ];
 
     public function users()
