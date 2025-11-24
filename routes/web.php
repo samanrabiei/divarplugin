@@ -19,6 +19,8 @@ use App\Http\Controllers\KenarOauthController;
 use App\Http\Controllers\Auth\OtpLoginController;
 use App\Http\Controllers\Admin\CustommerController;
 use App\Http\Controllers\Admin\DivarTransactionController;
+use App\Http\Controllers\Admin\TestController as AdminTestController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,6 +45,9 @@ Route::prefix('transactions')->name('transactions.')->middleware('Modirate')->gr
     Route::get('/', [DivarTransactionController::class, 'index'])->name('index');
     Route::get('/create', [DivarTransactionController::class, 'create'])->name('transactions.create');
     Route::post('/store', [DivarTransactionController::class, 'store'])->name('transactions.store');
+});
+Route::prefix('test')->name('test.')->middleware('Modirate')->group(function () {
+    Route::get('/', [AdminTestController::class, 'index'])->name('dashboard');
 });
 // test
 Route::prefix('blog')->name('blog.')->middleware('Modirate')->group(function () {
