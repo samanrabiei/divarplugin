@@ -39,6 +39,8 @@
 </script>
 {{-- palak --}}
 <script src="{{ asset('assets/palak/script.js') }}"></script><!-- toast -->
+{{-- scripts compnnets --}}
+@stack('scripts')
 </body>
 
 </html>
