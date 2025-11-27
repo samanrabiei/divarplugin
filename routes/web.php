@@ -46,7 +46,7 @@ Route::prefix('transactions')->name('transactions.')->middleware('Modirate')->gr
     Route::get('/create', [DivarTransactionController::class, 'create'])->name('transactions.create');
     Route::post('/store', [DivarTransactionController::class, 'store'])->name('transactions.store');
 });
-Route::prefix('test')->name('test.')->middleware('Modirate')->group(function () {
+Route::prefix('test')->name('test.')->group(function () {
     Route::get('/', [AdminTestController::class, 'index'])->name('dashboard');
 });
 // test
@@ -107,7 +107,7 @@ Route::get('user/', [userController::class, 'index'])->name('user.index');
 
 
 //divar
-Route::get('/shahkarinquiry', [ServiceController::class, 'shahkarinquiry'])->name('services.shahkarinquiry');
+
 
 
 Route::get('/', [DivarController::class, 'index'])->name('divar.index');
@@ -116,8 +116,14 @@ Route::get('profile/wallet', [profileController::class, 'wallet'])->middleware('
 Route::post('profile/wallet/post', [profileController::class, 'wallet'])->name('profile.wallet.post')->middleware('auth');
 
 //servicess
-Route::get('/services/shahkarinquiry', [ServiceController::class, 'shahkarinquiry'])->middleware('auth')->name('services.shahkarinquiry');
-Route::get('/services/requiest/{transicon}', [ServiceController::class, 'requiest'])->middleware('auth')->name('services.shahkarinquiryrequiest');
+Route::prefix('services')->name('services.')->middleware('auth')->group(function () {
+    Route::get('/shahkarinquiry', [ServiceController::class, 'shahkarinquiry'])->name('shahkarinquiry');
+    Route::get('/requiest/{transicon}', [ServiceController::class, 'requiest'])->name('shahkarinquiryrequiest');
+
+    Route::get('/VehicleViolation', [ServiceController::class, 'VehicleViolation'])->name('VehicleViolation');
+});
+
+
 
 //ceckout
 Route::get('/checkout/showform/{serviceId}', [CheckoutController::class, 'showForm'])->middleware('auth')->name('checkout.showForm');

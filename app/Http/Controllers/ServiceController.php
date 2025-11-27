@@ -9,7 +9,7 @@ class ServiceController extends Controller
 
     public function requiest($transicon)
     {
-        $date = session()->all();
+
 
         $service = session('service')[$transicon] ?? null;
 
@@ -23,5 +23,10 @@ class ServiceController extends Controller
     public function shahkarinquiry()
     {
         return view('divar.services.shahkarinquiry');
+    }
+
+    public function VehicleViolation()
+    {
+        return view('divar.services.VehicleViolation');
     }
 }

@@ -4,14 +4,14 @@ namespace App\Services;
 
 use App\Services\Strategies\Shahkar;
 use App\Services\Strategies\ServiceB;
-use App\Services\Strategies\ServiceC;
+use App\Services\Strategies\VehicleViolation;
 use App\Services\Contracts\ServiceStrategyInterface;
 
 class ServiceDispatcher
 {
     protected static $map = [
         'shahkar' => Shahkar::class,
-        'service_b' => ServiceB::class,
+        'VehicleViolation' => VehicleViolation::class,
     ];
 
     public static function dispatch($serviceType, $transaction)

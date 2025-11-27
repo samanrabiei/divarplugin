@@ -32,169 +32,59 @@
                 {{-- toast --}}
                 <x-toast.toast />
                 {{-- End toast --}}
-                <div class="tab-slide-effect">
-                    <ul class="nav nav-tabs" id="myTab2" role="tablist">
-                        <li class="tab-active-indicator" style="width: 90.7188px; transform: translateX(0px);"></li>
+                <div class="page-content  p-b65">
+                    <div class="container py-0">
 
-                        <li class="nav-item active" role="presentation">
-                            <button class="nav-link active" id="home-tab2" data-bs-toggle="tab"
-                                data-bs-target="#home-tab-pane2" type="button" role="tab"
-                                aria-controls="home-tab-pane2" aria-selected="true">همه</button>
-                        </li>
-
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="profile-tab2" data-bs-toggle="tab"
-                                data-bs-target="#profile-tab-pane2" type="button" role="tab"
-                                aria-controls="profile-tab-pane2" aria-selected="false"> احراز هویت</button>
-                        </li>
-
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="contact-tab2" data-bs-toggle="tab"
-                                data-bs-target="#contact-tab-pane2" type="button" role="tab"
-                                aria-controls="contact-tab-pane2" aria-selected="false">استعلام بانکی</button>
-                        </li>
-                        <li class="nav-item " role="presentation">
-                            <button class="nav-link " id="order-tab2" data-bs-toggle="tab" data-bs-target="#order-tab-pane2"
-                                type="button" role="tab" aria-controls="order-tab-pane2" aria-selected="false">
-                                استعلام خدماتی</button>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="tab-content pt-0" id="myTabContent2">
-
-                    <div class="tab-pane fade active show" id="home-tab-pane2" role="tabpanel" aria-labelledby="home-tab2"
-                        tabindex="0">
-                        <div class="row">
-                            <!-- Page Content Start -->
-                            <div class="page-content space-top">
-                                <div class="container">
-                                    <div class="col-12">
-                                        <div class="card">
-                                            <div class="card-header border-0 pb-0">
-                                                <h5 class="card-title"> تطابق کد ملی و شماره موبایل
-                                                </h5>
+                        <div class="product-items-list">
+                            <ul>
+                                <li>
+                                    <div class="product-items"><a href="{{ route('services.shahkarinquiry') }}">
+                                            <div class="media media-80 ms-2"><img src="assets/images/product/pic12.png"
+                                                    alt="">
                                             </div>
-                                            <div class="card-body">
-                                                <p class="card-text"> با این سرویس شماره موبایل طرف مقابل را با کد ملی او
-                                                    طبیق دهید تا مطمئن شوید که شماره موبایل متعلق به خود اوست.
+                                        </a><a href="cart.html">
+                                            <div class="product-content">
+                                                <h6 class="title"> استعلام کارت ملی و شماره موبایل</h6>
+                                                <div class="desc"> با این سرویس کد ملی و شماره موبایل خود را تطبیق دهید
+                                                </div>
+                                                <div class="product-footer">
 
-                                                </p>
+                                                    <span class="price">۱,۲۹۹ تومان
+                                                    </span>
+                                                </div>
                                             </div>
-                                            <div class="card-footer border-0 pt-0">
-                                                <p class="card-text d-inline"> 6000 تومان</p>
-                                                <a href="javascript:void(0);" class="card-link float-end"> استعلام
-                                                </a>
-                                            </div>
-                                        </div>
+                                        </a>
+                                        <a href="cart.html" class="btn btn-primary  dz-icon">
+                                            استعلام
+                                        </a>
                                     </div>
+                                </li>
+                                <li>
+                                    <div class="product-items"><a href="{{ route('services.VehicleViolation') }}">
+                                            <div class="media media-80 ms-2"><img src="assets/images/product/pic12.png"
+                                                    alt="">
+                                            </div>
+                                        </a><a href="{{ route('services.VehicleViolation') }}">
+                                            <div class="product-content">
+                                                <h6 class="title"> استعلام خلافی خودرو </h6>
+                                                <div class="desc"> از طریق این سرویس می تواند میزان خلافی های خودرو را
+                                                    استعلام نمود.
+                                                </div>
+                                                <div class="product-footer">
 
-                                </div>
-                            </div>
+                                                    <span class="price">30,000 تومان
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="{{ route('services.VehicleViolation') }}" class="btn btn-primary  dz-icon">
+                                            استعلام
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
-                    </div>
 
-                    <div class="tab-pane fade" id="profile-tab-pane2" role="tabpanel" aria-labelledby="profile-tab2"
-                        tabindex="0">
-                        <div class="row">
-                            <!-- Page Content Start -->
-                            <div class="page-content space-top">
-                                <div class="container">
-                                    <div class="col-12">
-                                        <div class="card">
-                                            <div class="card-header border-0 pb-0">
-                                                <h5 class="card-title"> تطابق کد ملی و شماره موبایل
-                                                </h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <p class="card-text"> با این سرویس شماره موبایل طرف مقابل را با کد ملی او
-                                                    طبیق دهید تا مطمئن شوید که شماره موبایل متعلق به خود اوست.
-                                                </p>
-                                            </div>
-                                            <div class="card-footer border-0 pt-0">
-                                                <p class="card-text d-inline"> 6000 تومان</p>
-                                                <a href="{{ route('services.shahkarinquiry') }}"
-                                                    class="card-link float-end"> استعلام
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tab-pane fade" id="contact-tab-pane2" role="tabpanel"
-                                aria-labelledby="contact-tab2" tabindex="0">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="dz-order">
-                                            <div class="order-info">
-                                                <div class="pe-3">
-                                                    <span class="productId">#12451245</span>
-                                                    <h6 class="title"><a href="product-detail.html">پیراهن زنانه قهوه‌ای
-                                                            از پارچه
-                                                            Coklat</a></h6>
-                                                </div>
-                                                <div class="media media-70">
-                                                    <img src="assets/images/popular/small/pic1.png" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="order-detail">
-                                                <span>مدل خاکستری</span>
-                                                <div class="d-flex gap-5">
-                                                    <span class="quantity">1x</span>
-                                                    <h5 class="price">47.6</h5>
-                                                </div>
-                                            </div>
-                                            <div class="status">
-                                                <a href="javascript:void(0);"
-                                                    class="badge badge-lg badge-outline-success me-4">
-                                                    <i class="fa-solid fa-circle"></i>
-                                                    <span>تکمیل شده</span>
-                                                </a>
-                                                <p class="mb-0 description">سفارش دریافت شده توسط [لویی سیماتوپنگ]</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tab-pane fade" id="order-tab-pane2" role="tabpanel" aria-labelledby="order-tab2"
-                                tabindex="0">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="dz-order">
-                                            <div class="order-info">
-                                                <div class="pe-3">
-                                                    <span class="productId">#12451245</span>
-                                                    <h6 class="title"><a href="product-detail.html">لباس خواب زنانه از
-                                                            برند
-                                                            Femall</a></h6>
-                                                </div>
-                                                <div class="media media-70">
-                                                    <img src="assets/images/popular/small/pic2.png" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="order-detail">
-                                                <span>مدل خاکستری</span>
-                                                <div class="d-flex gap-5">
-                                                    <span class="quantity">2x</span>
-                                                    <h5 class="price">47.6</h5>
-                                                </div>
-                                            </div>
-                                            <div class="status">
-                                                <a href="javascript:void(0);"
-                                                    class="badge badge-lg badge-outline-success me-4">
-                                                    <i class="fa-solid fa-circle"></i>
-                                                    <span>تکمیل شده</span>
-                                                </a>
-                                                <p class="mb-0 description">رسیده به تاریخ سررسید پرداخت</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
                     </div>
                 </div>
             </div>
