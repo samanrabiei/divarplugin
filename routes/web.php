@@ -110,7 +110,7 @@ Route::get('user/', [userController::class, 'index'])->name('user.index');
 
 
 
-Route::get('/', [DivarController::class, 'index'])->name('divar.index');
+Route::get('/', [ServiceController::class, 'VehicleViolation'])->name('divar.index');
 Route::get('profile/', [profileController::class, 'profile'])->middleware('auth')->name('profile.profile');
 Route::get('profile/wallet', [profileController::class, 'wallet'])->middleware('signed')->name('profile.wallet');
 Route::post('profile/wallet/post', [profileController::class, 'wallet'])->name('profile.wallet.post')->middleware('auth');

@@ -27260,3 +27260,13 @@ html {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+
+.account-box .logo-area {
+  max-width: 50%;
+}
+
+.seprate-box .back-btn {
+  width: 30%;
+  font-size: 15px;
+}
