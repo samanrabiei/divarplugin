@@ -25,7 +25,7 @@
 }
 
 .plate-letter {
-    width: 15% !important;
+    width: 100% !important;
     text-align: center;
 }
 
@@ -153,4 +153,9 @@
 
 .continer {
     width: 30%;
+}
+
+.messagepalalk {
+    font-size: 12px;
+    direction: rtl;
 }
