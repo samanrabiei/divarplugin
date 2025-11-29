@@ -70,7 +70,7 @@ class KenarOauthController extends Controller
         $user = User::updateOrCreate(
             ['phone' => $mobile_user], // شرط پیدا کردن کاربر
             [
-                'name' => 'fsdfs',  // یا هر چیزی که دوست داری
+                'name' =>  $result['user_id'],  // یا هر چیزی که دوست داری
                 'password' => bcrypt($mobile_user), // بهتره بعداً برابر نذاری
                 'role_id' => 2,
                 'token' => $data['access_token'],
