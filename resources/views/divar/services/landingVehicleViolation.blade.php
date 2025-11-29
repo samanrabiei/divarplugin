@@ -6,17 +6,22 @@
             <div class="container">
                 <div class="header-content">
                     <div class="left-content">
-                        <a href="javascript:void(0);" class="back-btn"><i class="icon feather icon-chevron-right"></i></a>
+                        <a href="{{ env('Back_divar') }}" class="back-btn"><i class="icon feather icon-chevron-right"></i></a>
                     </div>
+                    دیوار
                     <div class="mid-content">
-                        <h6 class="title">یاریانا</h6>
+                        <h6 class="title">{{ __('app.name_app') }}</h6>
                     </div>
                     <div class="right-content">
-                        <a href="search.html" class="search-icon"><i class="icon feather icon-search"></i></a>
+                        <a href="{{ route('profile.profile') }}" class="nav-link active"><i
+                                class="icon feather icon-user"></i>
+                            پروفایل
+                        </a>
                     </div>
                 </div>
             </div>
         </header>
+
         {{-- <div id="preloader">
             <div class="loader">
                 <div class="load-circle">
@@ -63,7 +68,7 @@
                     <a href="{{ route('kenar.login') }}" class="btn btn-primary w-100">استفاده از سرویس</a>
                 </div>
                 <div class="text-center text-primary">
-                    <a href="https://open-platform-redirect.divar.ir/completion" class="font-w500">بازگشت به دیوار</a>
+                    <a href="" class="font-w500">بازگشت به دیوار</a>
                 </div>
             </div>
         </footer>

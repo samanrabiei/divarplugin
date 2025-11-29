@@ -3,22 +3,26 @@
 @section('content')
     <x-page-assets css="{{ asset('assets/answer_service/style.css') }}" js="{{ asset('assets/answer_service/script.js') }}" />
 
+
     <header class="header header-fixed">
         <div class="container">
             <div class="header-content">
                 <div class="left-content">
-                    <a href="javascript:void(0);" class="back-btn">
-                        <i class="icon feather icon-chevron-right"></i>
-                    </a>
+                    <a href="{{ env('Back_divar') }}" class="back-btn"><i class="icon feather icon-chevron-right"></i></a>
+                </div>
+                دیوار
+                <div class="mid-content">
                     <h6 class="title">{{ __('app.Request result') }}</h6>
                 </div>
-                <div class="mid-content">
-                </div>
                 <div class="right-content">
+                    <a href="{{ route('profile.profile') }}" class="nav-link active"><i class="icon feather icon-user"></i>
+                        پروفایل
+                    </a>
                 </div>
             </div>
         </div>
     </header>
+
     <div class="page-content space-top p-b80">
         <div class="container">
 
@@ -124,8 +128,8 @@
                 </div>
             @else
             @endif
-            <a href="https://open-platform-redirect.divar.ir/completion" class="btn btn-outline-primary btn-block mb-3">
-                {{ __('app.return to divar') }}
+            <a href="{{ route('services.VehicleViolation') }}" class="btn btn-outline-primary btn-block mb-3">
+                {{ __('app.this service requist return') }}
             </a>
             <script>
                 function copyText(id) {
