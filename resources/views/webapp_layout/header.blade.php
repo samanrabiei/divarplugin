@@ -4,7 +4,7 @@
 <head>
 
     <!-- Title -->
-    <title>اعتمادینو – سامانه یکپارچه احراز هویت، خدمات بانکی و استعلامات</title>
+    <title> خلافی نشان - هاب ابزار </title>
 
     <meta charset="utf-8">
     <meta name="viewport"

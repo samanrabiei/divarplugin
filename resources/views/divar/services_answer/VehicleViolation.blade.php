@@ -14,11 +14,22 @@
                 <div class="mid-content">
                     <h6 class="title">{{ __('app.Request result') }}</h6>
                 </div>
-                <div class="right-content">
-                    <a href="{{ route('profile.profile') }}" class="nav-link active"><i class="icon feather icon-user"></i>
-                        پروفایل
-                    </a>
-                </div>
+                @auth
+                    <div class="right-content">
+                        <a href="{{ route('profile.profile') }}" class="">
+                            <i class="icon feather icon-user"></i>
+                            پروفایل
+                        </a>
+                    </div>
+                @endauth
+                @guest
+                    <div class="right-content">
+                        <a href="{{ route('profile.profile') }}" class="">
+                            <i class="icon feather icon-user"></i>
+                            ورود/ثبت نام
+                        </a>
+                    </div>
+                @endguest
             </div>
         </div>
     </header>

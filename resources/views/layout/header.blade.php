@@ -71,7 +71,7 @@
                                 </li>
                             @endauth
                         </ul>
-                        @auth
+                        
                             <div class="text-start">
                                 <p>
                                     {{ auth()->user()->name }}

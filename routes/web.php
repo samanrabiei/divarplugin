@@ -1,18 +1,10 @@
 <?php
 
-use App\Http\Controllers\senmessage;
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\Appmiddleware;
 use App\Http\Controllers\Authentication;
-use App\Http\Controllers\blogcontroller;
-use App\Http\Controllers\TestController;
-use App\Http\Controllers\userController;
-use App\Http\Controllers\DivarController;
 use App\Http\Controllers\InvoiceController;
-use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\profileController;
 use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\categorycontroller;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Admin\AdminCntroller;
 use App\Http\Controllers\KenarOauthController;
@@ -54,7 +46,6 @@ Route::prefix('test')->name('test.')->group(function () {
 
 
 // Authentication
-
 Route::get('/admin/admin', [Authentication::class, 'admin'])->name('admin');
 Route::post('/submitlogin', [Authentication::class, 'submitlogin'])->name('formlogin');
 Route::get('/logout', [Authentication::class, 'logout'])->name('logout');
@@ -63,18 +54,8 @@ Route::post('/password/resetpost', [Authentication::class, 'resetPasswordpost'])
 Route::get('/password/newpassword/{token}', [Authentication::class, 'NewPassword'])->name('new.password');
 Route::post('/password/postnewpassword', [Authentication::class, 'SubmitNewPassword'])->name('SubmitNewPassword');
 
-
-
-
-
-
-
-
 //divar
-
-
-
-Route::get('/', [ServiceController::class, 'VehicleViolation'])->name('divar.index');
+Route::get('/', [ServiceController::class, 'VehicleViolation'])->middleware('auth')->name('divar.index');
 Route::get('profile/', [profileController::class, 'profile'])->middleware('auth')->name('profile.profile');
 Route::get('profile/wallet', [profileController::class, 'wallet'])->middleware('signed')->name('profile.wallet');
 Route::post('profile/wallet/post', [profileController::class, 'wallet'])->name('profile.wallet.post')->middleware('auth');
@@ -86,14 +67,9 @@ Route::prefix('services')->name('services.')->middleware('auth')->group(function
 
     Route::get('/VehicleViolation', [ServiceController::class, 'VehicleViolation'])->name('VehicleViolation');
 });
-
-
-
 //ceckout
 Route::get('/checkout/showform/{serviceId}', [CheckoutController::class, 'showForm'])->middleware('auth')->name('checkout.showForm');
 Route::get('/checkout/payement', [CheckoutController::class, 'payement'])->middleware('auth')->name('checkout.payement');
-
-
 Route::get('/invoice', [InvoiceController::class, 'create'])->middleware('auth')->name('invoice.create');
 Route::post('/invoice/pay', [InvoiceController::class, 'pay'])->middleware('auth')->name('invoice.pay');
 Route::get('/payment/callback', [InvoiceController::class, 'callback'])->middleware('auth')->name('payment.callback');
@@ -102,19 +78,14 @@ Route::get('/payment/callback', [InvoiceController::class, 'callback'])->middlew
 Route::get('/login', [OtpLoginController::class, 'showPhoneForm'])->name('otp.phone.form');
 Route::get('/login-phone', [OtpLoginController::class, 'showPhoneForm'])->name('otp.phone.form');
 Route::post('/login-phone', [OtpLoginController::class, 'sendOtp'])->name('otp.send');
-
 Route::get('/verify-otp', [OtpLoginController::class, 'showVerifyForm'])->name('otp.verify.form');
 Route::post('/verify-otp', [OtpLoginController::class, 'verifyOtp'])->name('otp.verify');
-
 Route::get('/logout', [OtpLoginController::class, 'logout'])->middleware('auth')->name('logout');
-
-
 Route::get('/home', function () {
     return view('home');
 })->middleware('auth');
 
 
 //divar
-
 Route::get('/kenar/login', [KenarOauthController::class, 'redirectToKenar'])->name('kenar.login');
 Route::get('/kenar/callback', [KenarOauthController::class, 'handleCallback'])->name('kenar.callback');

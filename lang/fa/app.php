@@ -7,6 +7,6 @@ return [
     'this service requist return' => '+ درخواست دوباره این سرویس',
     'Mobile number and national ID matching (Shahkar identity verification)' => 'تطابق شماره موبایل و کد ملی (احراز هویت شاهکار)',
     'Request result' => 'نتیجه درخواست',
-    'name_app' => 'نارین وب',
+    'name_app' => 'خلافی نشان',
     '' => '',
 ];
