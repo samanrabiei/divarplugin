@@ -10,6 +10,8 @@ class DivarTransaction extends Model
 {
     protected $table = 'divar_transactions';
 
+    protected $primaryKey = 'transaction_id';
+
     public $timestamps = true;
 
     protected $fillable = [
