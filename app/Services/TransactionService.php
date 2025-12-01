@@ -28,7 +28,7 @@ class TransactionService
                 ])->post('https://open-api.divar.ir/v1/open-platform/user-payments', [
                     'amount_rials' => $amount,
                     'profit_rials' => $profit,
-                    'reference_id' => $transaction->id,
+                    'reference_id' => $transaction['transaction_id'],
                     'services' => [$service_shnase],
                 ]);
 
@@ -36,7 +36,9 @@ class TransactionService
 
                 // اگر درخواست موفق بود، sended را 1 کن
                 if (empty($data)) {
-                    $transaction->update(['sended' => 1]);
+                    $update = DivarTransaction::where('transaction_id', $transaction['transaction_id'])->first();
+                    $update->sended = 1; // یا هر مقداری که میخوای
+                    $update->save();
                 }
 
                 return true;
