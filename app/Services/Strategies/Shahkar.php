@@ -11,16 +11,16 @@ class Shahkar implements ServiceStrategyInterface
 {
     public function handle($service)
     {
-        // $url = "https://s.api.ir/api/sw1/Shahkar";
+        $url = "https://s.api.ir/api/sw1/Shahkar";
 
-        // $response = Http::withHeaders([
-        //     'Content-Type'  => 'application/json',
-        //     'Authorization' => env('APIIR_KEY'),
-        // ])->post($url, [
-        //     "nationalCode" => $service['codemele'],
-        //     "mobile"       => $service['phone'],
-        //     "isCompany"    => false
-        // ]);
+        $response = Http::withHeaders([
+            'Content-Type'  => 'application/json',
+            'Authorization' => env('APIIR_KEY'),
+        ])->post($url, [
+            "nationalCode" => $service['codemele'],
+            "mobile"       => $service['phone'],
+            "isCompany"    => false
+        ]);
 
         $data = $response->json();
 
