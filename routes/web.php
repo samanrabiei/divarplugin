@@ -71,7 +71,7 @@ Route::prefix('services')->name('services.')->middleware('auth')->group(function
 Route::get('/checkout/showform/{serviceId}', [CheckoutController::class, 'showForm'])->middleware('auth')->name('checkout.showForm');
 Route::get('/checkout/payement', [CheckoutController::class, 'payement'])->middleware('auth')->name('checkout.payement');
 Route::get('/invoice', [InvoiceController::class, 'create'])->middleware('auth')->name('invoice.create');
-Route::post('/invoice/pay', [InvoiceController::class, 'pay'])->middleware('auth')->name('invoice.pay');
+Route::post('/invoice/pay', [InvoiceController::class, 'pay'])->name('invoice.pay');
 Route::get('/payment/callback', [InvoiceController::class, 'callback'])->middleware('auth')->name('payment.callback');
 
 //OTP

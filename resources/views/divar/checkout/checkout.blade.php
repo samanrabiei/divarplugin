@@ -59,7 +59,7 @@
                                         <input type="radio" class="btn-check" name="payment_method" id="gateway_zarinpal"
                                             value="zarinpal" checked>
                                         <label class="btn ms-3 mb-0 tag-btn" for="gateway_zarinpal">
-                                            <img src="{{ asset('assets/images/payment/zarinpall.png') }}" alt="">
+                                            <img src="{{ asset('assets/images/payment/ziball.png') }}" alt="">
                                         </label>
                                     </div>
                                 </div>
