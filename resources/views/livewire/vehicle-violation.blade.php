@@ -74,7 +74,8 @@
                         <!-- حرف وسط -->
                         <div class="d-flex flex-column">
                             <input type="text" class="form-control plate-letter" maxlength="1" placeholder="الف"
-                                name="palak_letter" wire:model="palak_letter" id="palak_letter">
+                                name="palak_letter" wire:model="palak_letter" id="palak_letter" data-bs-toggle="modal"
+                                data-bs-target="#lettersModal">
 
                             @error('palak_letter')
                                 <span class="text-danger messagepalalk">{{ $message }}</span>
@@ -133,4 +134,62 @@
             </div>
         </div>
     </form>
+    <!-- مدال شیک -->
+    <div class="modal fade" id="lettersModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">انتخاب حرف</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">X</button>
+                </div>
+
+                <div class="modal-body text-center">
+
+                    <div class="d-flex flex-wrap gap-2 justify-content-center">
+                        <button class="btn btn-primary letter-btn">الف</button>
+                        <button class="btn btn-primary letter-btn">ب</button>
+                        <button class="btn btn-primary letter-btn">پ</button>
+                        <button class="btn btn-primary letter-btn">ت</button>
+                        <button class="btn btn-primary letter-btn">ث</button>
+                        <button class="btn btn-primary letter-btn">ج</button>
+
+                        <button class="btn btn-primary letter-btn">د</button>
+                        <button class="btn btn-primary letter-btn">ز</button>
+                        <button class="btn btn-primary letter-btn">س</button>
+                        <button class="btn btn-primary letter-btn">ش</button>
+                        <button class="btn btn-primary letter-btn">ص</button>
+                        <button class="btn btn-primary letter-btn">ط</button>
+                        <button class="btn btn-primary letter-btn">ع</button>
+                        <button class="btn btn-primary letter-btn">ف</button>
+                        <button class="btn btn-primary letter-btn">ق</button>
+                        <button class="btn btn-primary letter-btn">ک</button>
+                        <button class="btn btn-primary letter-btn">گ</button>
+                        <button class="btn btn-primary letter-btn">ل</button>
+                        <button class="btn btn-primary letter-btn">م</button>
+                        <button class="btn btn-primary letter-btn">ن</button>
+                        <button class="btn btn-primary letter-btn">و</button>
+                        <button class="btn btn-primary letter-btn">ه</button>
+                        <button class="btn btn-primary letter-btn">ی</button>
+                        <button class="btn btn-primary letter-btn">معلولین</button>
+                        <button class="btn btn-primary letter-btn">تشریفات</button>
+                        <button class="btn btn-primary letter-btn">D</button>
+                        <button class="btn btn-primary letter-btn">S</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 </div>
+<script>
+    document.querySelectorAll('.letter-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.getElementById('palak_letter').value = this.innerText;
+            var modal = bootstrap.Modal.getInstance(document.getElementById('lettersModal'));
+            modal.hide();
+        });
+    });
+</script>
