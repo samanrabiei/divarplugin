@@ -64,5 +64,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'Modirate' => \App\Http\Middleware\Modirate::class,
+        'check.divar.token' => \App\Http\Middleware\CheckDivarToken::class,
     ];
 }

@@ -56,13 +56,13 @@ Route::get('/password/newpassword/{token}', [Authentication::class, 'NewPassword
 Route::post('/password/postnewpassword', [Authentication::class, 'SubmitNewPassword'])->name('SubmitNewPassword');
 
 //divar
-Route::get('/', [ServiceController::class, 'VehicleViolation'])->middleware('auth')->name('divar.index');
-Route::get('profile/', [profileController::class, 'profile'])->middleware('auth')->name('profile.profile');
+Route::get('/', [ServiceController::class, 'VehicleViolation'])->middleware(['auth', 'check.divar.token'])->name('divar.index');
+Route::get('profile/', [profileController::class, 'profile'])->middleware(['auth', 'check.divar.token'])->name('profile.profile');
 Route::get('profile/wallet', [profileController::class, 'wallet'])->middleware('signed')->name('profile.wallet');
-Route::post('profile/wallet/post', [profileController::class, 'wallet'])->name('profile.wallet.post')->middleware('auth');
+Route::post('profile/wallet/post', [profileController::class, 'wallet'])->name('profile.wallet.post')->middleware(['auth', 'check.divar.token']);
 
 //servicess
-Route::prefix('services')->name('services.')->middleware('auth')->group(function () {
+Route::prefix('services')->name('services.')->middleware(['auth', 'check.divar.token'])->group(function () {
     Route::get('/shahkarinquiry', [ServiceController::class, 'shahkarinquiry'])->name('shahkarinquiry');
     Route::get('/requiest/{transicon}', [ServiceController::class, 'requiest'])->name('shahkarinquiryrequiest');
     Route::get('/VehicleViolation', [ServiceController::class, 'VehicleViolation'])->name('VehicleViolation');
@@ -73,11 +73,11 @@ Route::prefix('begins')->name('begin.')->group(function () {
     Route::get('/VehicleViolation', [begin::class, 'VehicleViolation'])->name('VehicleViolation');
 });
 //ceckout
-Route::get('/checkout/showform/{serviceId}', [CheckoutController::class, 'showForm'])->middleware('auth')->name('checkout.showForm');
-Route::get('/checkout/payement', [CheckoutController::class, 'payement'])->middleware('auth')->name('checkout.payement');
-Route::get('/invoice', [InvoiceController::class, 'create'])->middleware('auth')->name('invoice.create');
+Route::get('/checkout/showform/{serviceId}', [CheckoutController::class, 'showForm'])->middleware(['auth', 'check.divar.token'])->name('checkout.showForm');
+Route::get('/checkout/payement', [CheckoutController::class, 'payement'])->middleware(['auth', 'check.divar.token'])->name('checkout.payement');
+Route::get('/invoice', [InvoiceController::class, 'create'])->middleware(['auth', 'check.divar.token'])->name('invoice.create');
 Route::post('/invoice/pay', [InvoiceController::class, 'pay'])->name('invoice.pay');
-Route::get('/payment/callback', [InvoiceController::class, 'callback'])->middleware('auth')->name('payment.callback');
+Route::get('/payment/callback', [InvoiceController::class, 'callback'])->middleware(['auth', 'check.divar.token'])->name('payment.callback');
 
 //OTP
 Route::get('/login', [OtpLoginController::class, 'showPhoneForm'])->name('otp.phone.form');
@@ -85,10 +85,10 @@ Route::get('/login-phone', [OtpLoginController::class, 'showPhoneForm'])->name('
 Route::post('/login-phone', [OtpLoginController::class, 'sendOtp'])->name('otp.send');
 Route::get('/verify-otp', [OtpLoginController::class, 'showVerifyForm'])->name('otp.verify.form');
 Route::post('/verify-otp', [OtpLoginController::class, 'verifyOtp'])->name('otp.verify');
-Route::get('/logout', [OtpLoginController::class, 'logout'])->middleware('auth')->name('logout');
+Route::get('/logout', [OtpLoginController::class, 'logout'])->middleware(['auth', 'check.divar.token'])->name('logout');
 Route::get('/home', function () {
     return view('home');
-})->middleware('auth');
+})->middleware(['auth', 'check.divar.token']);
 
 
 //divar
