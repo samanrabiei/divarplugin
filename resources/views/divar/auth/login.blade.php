@@ -4,13 +4,13 @@
 
         <div class="account-box">
             <div class="container">
-                <div class="logo-area">
-                    <img class="logo-dark" src="assets/images/logo.png" alt="">
-                    <img class="logo-light" src="assets/images/logo-white.png" alt="">
+                <div class="logo-area text-center">
+                    <img class="logo-dark" src="https://hubabzar.ir/assets/img/logo/logo-abzar.png" alt="">
+                    <img class="logo-light" src="https://hubabzar.ir/assets/img/logo/logo-abzar.png" alt="">
                 </div>
-                <div class="section-head ps-0">
+                <div class="section-head ps-0 text-center">
                     <h2>خوش آمدید!</h2>
-                    <p>برای ورود یا ثبت نام شماره موبایل خود را وارد نمایید.</p>
+                    {{-- <p>برای ورود یا ثبت نام شماره موبایل خود را وارد نمایید.</p> --}}
                 </div>
                 @if (session('status'))
                     <div class="alert alert-danger solid alert-dismissible fade show">
@@ -33,7 +33,7 @@
                 @endif
                 <div class="account-area">
                     <form method="POST" action="{{ route('otp.send') }}">
-                        @csrf
+                        {{-- @csrf
                         <div class="mb-3">
                             <label class="form-label" for="name">شماره موبایل</label>
                             <input type="number" wire:model="phone" id="phone" class="form-control" name="phone"
@@ -55,10 +55,11 @@
 
                         </div>
 
-                        <button class="btn mb-3 btn-primary w-100" type="submit">ورود / ثبت نام</button>
-                        <p class="btn-link text-center mb-3 text-dark">با حساب دیوار خود وارد
-                            نمایید؟</p>
-                        <a href="{{ route('kenar.login') }}" class="btn mb-3 btn-outline-primary w-100">ورود با دیوار</a>
+                        <button class="btn mb-3 btn-primary w-100" type="submit">ورود / ثبت نام</button> --}}
+                        <p class="btn-link text-center mb-3 text-dark">با حساب دیوار خود وارد یا ثبت نام نمایید
+                        </p>
+                        <a href="{{ route('kenar.login') }}" class="btn mb-3 btn-outline-primary w-100">ورود با
+                            دیوار</a>
                         <div id="timerBox" class="text-center mt-3" style="display:none;">
                             <span>ارسال مجدد کد تا </span>
                             <span id="countdown" class="text-primary fw-bold">120</span>

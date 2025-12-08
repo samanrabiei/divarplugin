@@ -26028,7 +26028,7 @@ label input {
 }
 
 .account-box .logo-area {
-  text-align: center;
+  text-align: -webkit-center !important;
   max-width: 130px;
   margin: 40px auto 20px;
 }
