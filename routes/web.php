@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\begin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Authentication;
 use App\Http\Controllers\InvoiceController;
@@ -64,8 +65,12 @@ Route::post('profile/wallet/post', [profileController::class, 'wallet'])->name('
 Route::prefix('services')->name('services.')->middleware('auth')->group(function () {
     Route::get('/shahkarinquiry', [ServiceController::class, 'shahkarinquiry'])->name('shahkarinquiry');
     Route::get('/requiest/{transicon}', [ServiceController::class, 'requiest'])->name('shahkarinquiryrequiest');
-
     Route::get('/VehicleViolation', [ServiceController::class, 'VehicleViolation'])->name('VehicleViolation');
+});
+
+//
+Route::prefix('begins')->name('begin.')->group(function () {
+    Route::get('/VehicleViolation', [begin::class, 'VehicleViolation'])->name('VehicleViolation');
 });
 //ceckout
 Route::get('/checkout/showform/{serviceId}', [CheckoutController::class, 'showForm'])->middleware('auth')->name('checkout.showForm');
