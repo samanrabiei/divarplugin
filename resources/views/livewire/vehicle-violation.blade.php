@@ -73,9 +73,44 @@
 
                         <!-- حرف وسط -->
                         <div class="d-flex flex-column">
-                            <input type="text" class="form-control plate-letter" maxlength="1" placeholder="الف"
-                                name="palak_letter" wire:model="palak_letter" id="palak_letter" data-bs-toggle="modal"
-                                data-bs-target="#lettersModal">
+
+                            <select class="form-control plate-letter" name="palak_letter" wire:model="palak_letter"
+                                id="palak_letter">
+
+                                <option value="">انتخاب حرف</option>
+
+                                <option value="الف">الف</option>
+                                <option value="ب">ب</option>
+                                <option value="پ">پ</option>
+                                <option value="ت">ت</option>
+                                <option value="ث">ث</option>
+                                <option value="ج">ج</option>
+
+                                <option value="د">د</option>
+                                <option value="ز">ز</option>
+                                <option value="س">س</option>
+                                <option value="ش">ش</option>
+                                <option value="ص">ص</option>
+                                <option value="ط">ط</option>
+                                <option value="ع">ع</option>
+                                <option value="ف">ف</option>
+                                <option value="ق">ق</option>
+                                <option value="ک">ک</option>
+                                <option value="گ">گ</option>
+                                <option value="ل">ل</option>
+                                <option value="م">م</option>
+                                <option value="ن">ن</option>
+                                <option value="و">و</option>
+                                <option value="ه">ه</option>
+                                <option value="ی">ی</option>
+
+                                <option value="معلولین">معلولین</option>
+                                <option value="تشریفات">تشریفات</option>
+                                <option value="D">D</option>
+                                <option value="S">S</option>
+
+                            </select>
+
 
                             @error('palak_letter')
                                 <span class="text-danger messagepalalk">{{ $message }}</span>
@@ -184,12 +219,3 @@
     </div>
 
 </div>
-<script>
-    document.querySelectorAll('.letter-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            document.getElementById('palak_letter').value = this.innerText;
-            var modal = bootstrap.Modal.getInstance(document.getElementById('lettersModal'));
-            modal.hide();
-        });
-    });
-</script>
