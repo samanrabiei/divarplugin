@@ -64,12 +64,17 @@
             <li class="dropdown">
                 <a href="javascript:void(0)">
                     <iconify-icon icon="solar:document-text-outline" class="menu-icon"></iconify-icon>
-                    <span>سرویس ها</span>
+                    <span>برگه ها</span>
                 </a>
                 <ul class="sidebar-submenu">
                     <li>
-                        <a href="'typography') }}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                            Typography</a>
+                        <a href="{{ url('admin/pages') }}"><i
+                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
+                            برگه ها</a>
+
+                        <a href="{{ url('admin/pages/create') }}"><i
+                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
+                            افزودن برگه جدید</a>
                     </li>
 
                 </ul>
@@ -85,26 +90,7 @@
                         <a href="'company') }}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
                             Company</a>
                     </li>
-                    <li>
-                        <a href="'notification') }}"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
-                            Notification</a>
-                    </li>
-                    <li>
-                        <a href="'notificationAlert') }}"><i
-                                class="ri-circle-fill circle-icon text-info-main w-auto"></i> Notification Alert</a>
-                    </li>
-                    <li>
-                        <a href="'theme') }}"><i class="ri-circle-fill circle-icon text-danger-main w-auto"></i>
-                            Theme</a>
-                    </li>
-                    <li>
-                        <a href="'currencies') }}"><i class="ri-circle-fill circle-icon text-danger-main w-auto"></i>
-                            Currencies</a>
-                    </li>
-                    <li>
-                        <a href="'language') }}"><i class="ri-circle-fill circle-icon text-danger-main w-auto"></i>
-                            Languages</a>
-                    </li>
+           
                     <li>
                         <a href="'paymentGateway') }}"><i
                                 class="ri-circle-fill circle-icon text-danger-main w-auto"></i> Payment Gateway</a>

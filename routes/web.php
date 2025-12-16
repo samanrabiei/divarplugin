@@ -7,7 +7,9 @@ use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\profileController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\Admin\AdminCntroller;
+use App\Http\Controllers\Admin\AdminPageController;
 use App\Http\Controllers\KenarOauthController;
 use App\Http\Controllers\Auth\OtpLoginController;
 use App\Http\Controllers\Admin\CustommerController;
@@ -60,6 +62,13 @@ Route::get('/', [ServiceController::class, 'VehicleViolation'])->middleware(['au
 Route::get('profile/', [profileController::class, 'profile'])->middleware(['auth', 'check.divar.token'])->name('profile.profile');
 Route::get('profile/wallet', [profileController::class, 'wallet'])->middleware('signed')->name('profile.wallet');
 Route::post('profile/wallet/post', [profileController::class, 'wallet'])->name('profile.wallet.post')->middleware(['auth', 'check.divar.token']);
+
+//pages
+Route::get('/page/{slug}', [PageController::class, 'show'])->name('pages.show');
+
+Route::prefix('admin')->middleware('Modirate')->group(function () {
+    Route::resource('pages', AdminPageController::class);
+});
 
 //servicess
 Route::prefix('services')->name('services.')->middleware(['auth', 'check.divar.token'])->group(function () {

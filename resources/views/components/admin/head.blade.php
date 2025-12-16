@@ -36,4 +36,10 @@
     <link rel="stylesheet" href="{{ asset('admin/assets/css/rtl.css') }}">
     {{-- style --}}
     <link rel="stylesheet" href="{{ asset('admin/assets/toast/styles.css') }}">
+
+    <!-- for add style -->
+    {{-- @push('styles')
+    @endpush --}}
+    @stack('styles')
+
 </head>

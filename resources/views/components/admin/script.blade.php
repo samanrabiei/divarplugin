@@ -43,3 +43,5 @@
     <script src="{{ asset('admin/assets/js/app.js') }}"></script>
 
     <?php echo isset($script) ? $script : ''; ?>
+
+    @stack('scripts')
