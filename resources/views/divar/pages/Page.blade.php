@@ -44,11 +44,11 @@
         </div> --}}
         <div class="page-content">
             <div class="account-box">
-                <div class="container">
+                <div class="container pt-5">
 
                     <div class="section-head text-right pt-5">
                         <h2> {{ $page->title }}</h2>
-                        <div class="detail-content">
+                        <div class="detail-content PT-3">
 
                             {!! $page->content !!}
 

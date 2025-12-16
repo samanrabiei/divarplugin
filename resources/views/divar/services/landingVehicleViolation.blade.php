@@ -49,7 +49,7 @@
                         <img class="logo-light" src="{{ asset('assets/images/serviceanswer/carkalafe.jpg') }}"
                             alt="">
                     </div>
-                    <div class="section-head text-right pt-0">
+                    <div class="section-head text-right pt-0 mb-50">
                         <h2> استعلام خلافی</h2>
                         <div class="detail-content">
                             <p>سرویس استعلام خلافی خودرو به شما کمک می‌کند قبل از خرید یا فروش خودرو، از وضعیت دقیق
