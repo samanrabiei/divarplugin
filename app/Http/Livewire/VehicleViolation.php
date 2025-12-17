@@ -38,8 +38,8 @@ class VehicleViolation extends Component
         'palak_part2.required' => 'سه رقم وسط پلاک الزامی است.',
         'palak_part2.digits'   => 'سه رقم وسط پلاک باید دقیقاً ۳ رقم باشد.',
 
-        'palak_irancode.required' => 'کد ایران پلاک الزامی است.',
-        'palak_irancode.digits'   => 'کد ایران پلاک باید دقیقاً ۲ رقم باشد.',
+        'palak_irancode.required' => 'کد استان پلاک الزامی است.',
+        'palak_irancode.digits'   => 'کد استان پلاک باید دقیقاً ۲ رقم باشد.',
     ];
 
     public function submit()

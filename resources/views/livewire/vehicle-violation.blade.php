@@ -49,12 +49,12 @@
                         <strong class="text-primary">{{ $message }}</strong>
                     @enderror
                 </div>
-                <div class="mb-3">
+                <div class="mb-3" x-data="plateAutoMove()">
                     <label class="form-label" for="codemele"> پلاک خودرو*</label>
 
                     <div class="plate-section border-section">
 
-                        <!-- پرچم و I.R IRAN -->
+                        <!-- پرچم -->
                         <div class="palak-parcham">
                             <img src="{{ asset('assets/images/palak/flagiran.jpg') }}" alt="پرچم ایران"
                                 style="height: 25px;">
@@ -63,29 +63,24 @@
 
                         <!-- دو رقم اول -->
                         <div class="d-flex flex-column">
-                            <input type="text" name="palak_part_1" wire:model="palak_part_1"
-                                class="form-control plate-input" maxlength="2" placeholder="- -" id="palak_part_1">
+                            <input type="number" name="palak_part_1" wire:model.lazy="palak_part_1"
+                                class="form-control plate-input" maxlength="2" placeholder="- -" id="palak_part_1"
+                                x-ref="i0" @input="next(0)" @keydown.backspace="back(0)">
 
-                            @error('palak_part_1')
-                                <span class="text-danger messagepalalk">{{ $message }}</span>
-                            @enderror
+
                         </div>
 
                         <!-- حرف وسط -->
                         <div class="d-flex flex-column">
-
-                            <select class="form-control plate-letter" name="palak_letter" wire:model="palak_letter"
-                                id="palak_letter">
-
-                                <option value="">انتخاب حرف</option>
-
+                            <select class="form-control plate-letter" name="palak_letter" wire:model.lazy="palak_letter"
+                                id="palak_letter" x-ref="i1" @change="next(1)" @keydown.backspace="back(1)">
+                                <option value="">حرف</option>
                                 <option value="الف">الف</option>
                                 <option value="ب">ب</option>
                                 <option value="پ">پ</option>
                                 <option value="ت">ت</option>
                                 <option value="ث">ث</option>
                                 <option value="ج">ج</option>
-
                                 <option value="د">د</option>
                                 <option value="ز">ز</option>
                                 <option value="س">س</option>
@@ -103,28 +98,22 @@
                                 <option value="و">و</option>
                                 <option value="ه">ه</option>
                                 <option value="ی">ی</option>
-
                                 <option value="معلولین">معلولین</option>
                                 <option value="تشریفات">تشریفات</option>
                                 <option value="D">D</option>
                                 <option value="S">S</option>
-
                             </select>
 
 
-                            @error('palak_letter')
-                                <span class="text-danger messagepalalk">{{ $message }}</span>
-                            @enderror
                         </div>
 
                         <!-- سه رقم وسط -->
                         <div class="d-flex flex-column">
-                            <input type="text" class="form-control plate-input" maxlength="3" placeholder="- - -"
-                                name="palak_part2" wire:model="palak_part2" id="palak_part2">
+                            <input type="number" class="form-control plate-input" maxlength="3" placeholder="- - -"
+                                name="palak_part2" wire:model.lazy="palak_part2" id="palak_part2" x-ref="i2"
+                                @input="next(2)" @keydown.backspace="back(2)">
 
-                            @error('palak_part2')
-                                <span class="text-danger messagepalalk">{{ $message }}</span>
-                            @enderror
+
                         </div>
 
                         <span>-</span>
@@ -133,20 +122,30 @@
                         <div class="palak_irancode d-flex flex-column">
                             <div style="font-size: 12px; font-weight: bold;direction: rtl;">ایران</div>
 
-                            <input type="text" class="form-control plate-input" maxlength="2" placeholder="- -"
-                                name="palak_irancode" wire:model="palak_irancode" id="palak_irancode">
+                            <input type="number" class="form-control plate-input" maxlength="2" placeholder="- -"
+                                name="palak_irancode" wire:model.lazy="palak_irancode" id="palak_irancode"
+                                x-ref="i3" @keydown.backspace="back(3)">
 
-                            @error('palak_irancode')
-                                <span class="text-danger messagepalalk">{{ $message }}</span>
-                            @enderror
                         </div>
 
                     </div>
+                    @error('palak_part_1')
+                        <span class="text-danger messagepalalk">{{ $message }}</span></br>
+                    @enderror
+
+                    @error('palak_letter')
+                        <span class="text-danger messagepalalk">{{ $message }}</span></br>
+                    @enderror
+
+                    @error('palak_part2')
+                        <span class="text-danger messagepalalk">{{ $message }}</span></br>
+                    @enderror
+
+                    @error('palak_irancode')
+                        <span class="text-danger messagepalalk">{{ $message }}</span></br>
+                    @enderror
+
                 </div>
-
-
-
-
                 <div class="divider border"></div>
                 <h6>توضیحات</h6>
                 <h7> استعلام خلافی خودرو</h7>
@@ -219,3 +218,25 @@
     </div>
 
 </div>
+
+<script>
+    function plateAutoMove() {
+        return {
+            next(index) {
+                const el = this.$refs['i' + index];
+                if (el.value.length > el.maxLength) {
+                    el.value = el.value.slice(0, el.maxLength);
+                }
+                if (el.value.length === el.maxLength) {
+                    this.$refs['i' + (index + 1)]?.focus();
+                }
+            },
+            back(index) {
+                const el = this.$refs['i' + index];
+                if (el.value === '' && index > 0) {
+                    this.$refs['i' + (index - 1)].focus();
+                }
+            }
+        }
+    }
+</script>
