@@ -19,7 +19,7 @@ class VehicleViolation extends Component
         'phone' => 'required|regex:/^09\d{9}$/',
         'codemele' => 'required|digits:10',
         'palak_part_1'   => 'required|digits:2',
-        'palak_letter' => 'required|regex:/^[آ-یA-Za-z]$/u',
+        'palak_letter' => 'required',
         'palak_part2'    => 'required|digits:3',
         'palak_irancode' => 'required|digits:2',
     ];
@@ -33,7 +33,6 @@ class VehicleViolation extends Component
         'palak_part_1.digits'   => 'دو رقم اول پلاک باید دقیقاً ۲ رقم باشد.',
 
         'palak_letter.required' => 'حرف وسط پلاک الزامی است.',
-        'palak_letter.regex'    => 'حرف وسط پلاک باید فقط یک حرف باشد.',
 
         'palak_part2.required' => 'سه رقم وسط پلاک الزامی است.',
         'palak_part2.digits'   => 'سه رقم وسط پلاک باید دقیقاً ۳ رقم باشد.',
