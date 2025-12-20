@@ -10,44 +10,45 @@ use App\Services\TransactionService;
 //send data in divar message
 use App\Services\DivarMessageService;
 use App\Helpers\TextHelper;
+use Hekmatinasser\Verta\Verta;
 
 class VehicleViolation implements ServiceStrategyInterface
 {
     public function handle($service)
     {
         // dd($service);
-        $url = "https://s.api.ir/api/sw1/VehicleViolation";
+        // $url = "https://s.api.ir/api/sw1/VehicleViolation";
 
-        $response = Http::withHeaders([
-            'Content-Type'  => 'application/json',
-            'Authorization' => env('APIIR_KEY'),
-        ])->post($url, [
-            "nationalCode" => $service['codemele'],
-            "mobile"       => $service['phone'],
-            "plate"    => $service['palak']
-        ]);
+        // $response = Http::withHeaders([
+        //     'Content-Type'  => 'application/json',
+        //     'Authorization' => env('APIIR_KEY'),
+        // ])->post($url, [
+        //     "nationalCode" => $service['codemele'],
+        //     "mobile"       => $service['phone'],
+        //     "plate"    => $service['palak']
+        // ]);
 
-        $response = $response->json();
+        // $response = $response->json();
 
         //code test
 
-        // $datea = [
-        //     "data" => [
-        //         "plate" => "111ب22ایران22",
-        //         "priceStatus" => "پرداخت نشده",
-        //         "paperId" => "123456",
-        //         "paymentId" => "654321",
-        //         "warningPrice" => "0",
-        //         "inquirePrice" => "0",
-        //         "ejrInquireNo" => "987654"
-        //     ],
-        //     "success" => true,
-        //     "code" => 1,
-        //     "error" => null,
-        //     "message" => null
-        // ];
-        // $datatest = response()->json($datea);
-        // $response = $datatest->getData(true);
+        $datea = [
+            "data" => [
+                "plate" => "111ب22ایران22",
+                "priceStatus" => "پرداخت نشده",
+                "paperId" => "123456",
+                "paymentId" => "654321",
+                "warningPrice" => "120000",
+                "inquirePrice" => "120000",
+                "ejrInquireNo" => "987654"
+            ],
+            "success" => true,
+            "code" => 1,
+            "error" => null,
+            "message" => null
+        ];
+        $datatest = response()->json($datea);
+        $response = $datatest->getData(true);
         // dd($service);
         //submit transction
         $id =  Auth::id();
@@ -83,10 +84,12 @@ class VehicleViolation implements ServiceStrategyInterface
          • شناسه پرداخت: {shnasepardagt}
 
          • مبلغ کل جریمه‌ها:  {price} ریال
+    
+          زمان استعلام: {date_time}
           • شماره پیگیری استعلام: {shomarepegere}
    
             📝 توضیح:
-           برای پرداخت جریمه‌ها می‌توانید از برنامه ها معتبر بانکی، کارت خوان، دستگاه ATM و همه مواردی که قابلیت پرداخت قبض با شناسه قبض و پرداخت را دارند را استفاده کنید.
+           برای پرداخت جریمه‌ها می‌توانید از برنامه ها معتبر بانکی، کارت خوان، دستگاه ATM و همه مواردی که قابلیت پرداخت قبض با شناسه قبض و پرداخت را دارند استفاده نمایید.
         ';
             } else {
                 $message_text = '
@@ -96,6 +99,9 @@ class VehicleViolation implements ServiceStrategyInterface
 
     📄 وضعیت خلافی‌ها:
  ✅ وضعیت پرداخت:  {vazit}
+
+  زمان استعلام: {date_time}
+
  شماره پیگیری استعلام: {shomarepegere}
    
     📝 توضیح:
@@ -110,6 +116,7 @@ class VehicleViolation implements ServiceStrategyInterface
                 'shnasepardagt' =>  $messages['paymentId'],
                 'price' => number_format($messages['inquirePrice']),
                 'shomarepegere' => $messages['ejrInquireNo'],
+                'date_time' => (new Verta())->format('H:i:s d-m-Y ')
             ]);
             //start
             $service_message = new DivarMessageService();
@@ -130,6 +137,6 @@ class VehicleViolation implements ServiceStrategyInterface
             }
         }
 
-        return view('divar.services_answer.VehicleViolation', ['messages' => $messages, 'service' => $service]);
+        return view('divar.services_answer.VehicleViolation', ['messages' => $messages, 'service' => $service, 'date_time' => (new Verta())->format('H:i:s Y-m-d ')]);
     }
 }

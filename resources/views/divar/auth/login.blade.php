@@ -33,7 +33,7 @@
                 @endif
                 <div class="account-area">
                     <form method="POST" action="{{ route('otp.send') }}">
-                        {{-- @csrf
+                        @csrf
                         <div class="mb-3">
                             <label class="form-label" for="name">شماره موبایل</label>
                             <input type="number" wire:model="phone" id="phone" class="form-control" name="phone"
@@ -55,7 +55,7 @@
 
                         </div>
 
-                        <button class="btn mb-3 btn-primary w-100" type="submit">ورود / ثبت نام</button> --}}
+                        <button class="btn mb-3 btn-primary w-100" type="submit">ورود / ثبت نام</button>
                         <p class="btn-link text-center mb-3 text-dark">با حساب دیوار خود وارد یا ثبت نام نمایید
                         </p>
                         <a href="{{ route('kenar.login') }}" class="btn mb-3 btn-outline-primary w-100">ورود با

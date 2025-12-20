@@ -10,6 +10,7 @@ use App\Services\TransactionService;
 //send data in divar message
 use App\Services\DivarMessageService;
 use App\Helpers\TextHelper;
+use Hekmatinasser\Verta\Verta;
 
 class VehicleViolation implements ServiceStrategyInterface
 {
@@ -19,7 +20,7 @@ class VehicleViolation implements ServiceStrategyInterface
         preg_match('/^([^\d]+)(\d{2})([^\d]+)(\d{3})(\d{2})$/u', $service['palak'], $matches);
         $palak_section_1 = $matches[2] . ' ' . $matches[4] . ' ' . $matches[1];
         $palak_section_2 = $matches[5];
-
+        // dd(env('ZIBALL'),$service['phone'],$service['codemele'],$palak_section_1,$palak_section_2);
         $url = "https://service.zohal.io/api/v0/services/inquiry/vehicle_inquiry/total_violations";
 
         $response = Http::withHeaders([
@@ -33,7 +34,7 @@ class VehicleViolation implements ServiceStrategyInterface
         ]);
 
         $response = $response->json();
-
+        dd($response);
         //code test
 
         // $datea = [
@@ -74,7 +75,7 @@ class VehicleViolation implements ServiceStrategyInterface
         // dd($response);
         // $code = $data['code'];
 
-
+        // dd($response);
         if (isset($response['result']) && $response['result'] == 1) {
             $messages = $response;
 
@@ -87,15 +88,17 @@ class VehicleViolation implements ServiceStrategyInterface
            🔹 پلاک خودرو: {palak}
 
          📄 وضعیت خلافی‌ها:
-         • وضعیت پرداخت: پرداخت نشده
+         • وضعیت پرداخت:  {vazit}
          • شناسه قبض: {shnasegabz}
          • شناسه پرداخت: {shnasepardagt}
 
          • مبلغ کل جریمه‌ها:  {price} ریال
+    
+          زمان استعلام: {date_time}
           • شماره پیگیری استعلام: {shomarepegere}
    
             📝 توضیح:
-           برای پرداخت جریمه‌ها می‌توانید از برنامه ها معتبر بانکی، کارت خوان، دستگاه ATM و همه مواردی که قابلیت پرداخت قبض با شناسه قبض و پرداخت را دارند را استفاده کنید.
+           برای پرداخت جریمه‌ها می‌توانید از برنامه ها معتبر بانکی، کارت خوان، دستگاه ATM و همه مواردی که قابلیت پرداخت قبض با شناسه قبض و پرداخت را دارند استفاده نمایید.
         ';
             } else {
                 $message_text = '
@@ -104,7 +107,10 @@ class VehicleViolation implements ServiceStrategyInterface
     🔹 پلاک خودرو: {palak}
 
     📄 وضعیت خلافی‌ها:
- ✅ وضعیت پرداخت:  پرداخت شده
+ ✅ وضعیت پرداخت:  {vazit}
+
+  زمان استعلام: {date_time}
+
  شماره پیگیری استعلام: {shomarepegere}
    
     📝 توضیح:
@@ -118,6 +124,7 @@ class VehicleViolation implements ServiceStrategyInterface
                 'shnasepardagt' =>  $messages['response_body']['data']['payment_id'],
                 'price' => number_format($messages['response_body']['data']['inquire_price']),
                 'shomarepegere' => $messages['response_body']['data']['ejr_inquire_no'],
+                'date_time' => (new Verta())->format('H:i:s d-m-Y ')
             ]);
             //start
             $service_message = new DivarMessageService();
@@ -138,6 +145,6 @@ class VehicleViolation implements ServiceStrategyInterface
             }
         }
 
-        return view('divar.services_answer.VehicleViolationZiball', ['messages' => $messages, 'service' => $service]);
+        return view('divar.services_answer.VehicleViolationZibal', ['messages' => $messages, 'service' => $service, 'date_time' => (new Verta())->format('H:i:s Y-m-d ')]);
     }
 }

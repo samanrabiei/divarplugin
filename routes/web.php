@@ -71,7 +71,7 @@ Route::prefix('admin')->middleware('Modirate')->group(function () {
 });
 
 //servicess
-Route::prefix('services')->name('services.')->middleware(['auth', 'check.divar.token'])->group(function () {
+Route::prefix('services')->name('services.')->group(function () {
     Route::get('/shahkarinquiry', [ServiceController::class, 'shahkarinquiry'])->name('shahkarinquiry');
     Route::get('/requiest/{transicon}', [ServiceController::class, 'requiest'])->name('shahkarinquiryrequiest');
     Route::get('/VehicleViolation', [ServiceController::class, 'VehicleViolation'])->name('VehicleViolation');
