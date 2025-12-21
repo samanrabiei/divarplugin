@@ -33,6 +33,7 @@
                             <th scope="col" class="">هزینه سرویس</th>
                             <th scope="col" class="">پرداختی </th>
                             <th scope="col" class="">شناسه سرویس</th>
+                            <th scope="col" class=""> زمان</th>
                             <th scope="col" class=""> مشتری</th>
                             <th scope="col" class=""> وضعیت ارسال</th>
                             <th scope="col" class="">اقدام</th>
@@ -57,6 +58,7 @@
                                 <td> {{ number_format($transaction->amount) }} تومان</td>
 
                                 <td> {{ $transaction->service_shnase }} </td>
+                                <td> {{ verta($transaction->created_at) }}</td>
                                 <td> {{ $transaction->users->phone }} </td>
                                 </td>
                                 <td class="">
@@ -81,6 +83,10 @@
                                             </button>
                                         </a>
 
+                                        <button type="button"
+                                            class="remove-item-btn bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
+                                            <iconify-icon icon="fluent:delete-24-regular" class="menu-icon"></iconify-icon>
+                                        </button>
                                         <button type="button"
                                             class="remove-item-btn bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
                                             <iconify-icon icon="fluent:delete-24-regular" class="menu-icon"></iconify-icon>

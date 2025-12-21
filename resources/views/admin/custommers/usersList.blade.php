@@ -51,7 +51,7 @@
                                 </td>
                                 <td>{{ $customer->phone }} </td>
 
-                                <td> {{ number_format($customer->wallet->balance) }} تومان</td>
+                                <td> {{ number_format($customer->wallet->balance ?? 0) }} تومان</td>
                                 <td>
                                     @if ($customer->role_id == 2)
                                         مشتری
