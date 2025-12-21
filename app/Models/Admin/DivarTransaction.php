@@ -24,6 +24,6 @@ class DivarTransaction extends Model
 
     public function users()
     {
-        return $this->hasOne(Customers::class, 'id', 'user_id');
+        return $this->belongsTo(Customers::class, 'id', 'user_id');
     }
 }
