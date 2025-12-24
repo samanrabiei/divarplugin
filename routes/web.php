@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\AdminPageController;
 use App\Http\Controllers\KenarOauthController;
 use App\Http\Controllers\Auth\OtpLoginController;
 use App\Http\Controllers\Admin\CustommerController;
+use App\Http\Controllers\Admin\SmsTemplateController;
 use App\Http\Controllers\Admin\DivarTransactionController;
 use App\Http\Controllers\Admin\TestController as AdminTestController;
 
@@ -41,6 +42,7 @@ Route::prefix('transactions')->name('transactions.')->middleware('Modirate')->gr
     Route::get('/create', [DivarTransactionController::class, 'create'])->name('transactions.create');
     Route::post('/store', [DivarTransactionController::class, 'store'])->name('transactions.store');
 });
+Route::resource('sms-templates', SmsTemplateController::class);
 
 // test
 Route::prefix('test')->name('test.')->group(function () {

@@ -79,7 +79,24 @@
 
                 </ul>
             </li>
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="solar:document-text-outline" class="menu-icon"></iconify-icon>
+                    <span>قالب پیام ها</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a href="{{ url('sms-templates') }}"><i
+                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
+                            قالب ها</a>
 
+                        <a href="{{ url('sms-templates/create') }}"><i
+                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
+                            افزودن قالب جدید</a>
+                    </li>
+
+                </ul>
+            </li>
             <li class="dropdown">
                 <a href="javascript:void(0)">
                     <iconify-icon icon="icon-park-outline:setting-two" class="menu-icon"></iconify-icon>
@@ -90,7 +107,7 @@
                         <a href="'company') }}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
                             Company</a>
                     </li>
-           
+
                     <li>
                         <a href="'paymentGateway') }}"><i
                                 class="ri-circle-fill circle-icon text-danger-main w-auto"></i> Payment Gateway</a>
