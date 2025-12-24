@@ -86,17 +86,18 @@
                 </a>
                 <ul class="sidebar-submenu">
                     <li>
-                        <a href="{{ url('sms-templates') }}"><i
+                        <a href="{{ url('admin/sms-templates') }}"><i
                                 class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
                             قالب ها</a>
 
-                        <a href="{{ url('sms-templates/create') }}"><i
+                        <a href="{{ url('admin/sms-templates/admin/create') }}"><i
                                 class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
                             افزودن قالب جدید</a>
                     </li>
 
                 </ul>
             </li>
+
             <li class="dropdown">
                 <a href="javascript:void(0)">
                     <iconify-icon icon="icon-park-outline:setting-two" class="menu-icon"></iconify-icon>

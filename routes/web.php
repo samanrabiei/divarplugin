@@ -42,7 +42,11 @@ Route::prefix('transactions')->name('transactions.')->middleware('Modirate')->gr
     Route::get('/create', [DivarTransactionController::class, 'create'])->name('transactions.create');
     Route::post('/store', [DivarTransactionController::class, 'store'])->name('transactions.store');
 });
-Route::resource('sms-templates', SmsTemplateController::class);
+
+
+Route::prefix('admin')->middleware('Modirate')->group(function () {
+    Route::resource('sms-templates', SmsTemplateController::class);
+});
 
 // test
 Route::prefix('test')->name('test.')->group(function () {

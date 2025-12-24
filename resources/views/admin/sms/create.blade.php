@@ -73,7 +73,7 @@
                             </div>
                             <!-- ویرایشگر -->
                             <div>
-                                <label class="form-label fw-bold text-neutral-900">توضیحات برگه:</label>
+                                <label class="form-label fw-bold text-neutral-900">توضیحات قالب:</label>
                                 <textarea name="content_theme" class="form-control" rows="4" cols="50" placeholder="">{{ old('content_theme', $smsTemplate->content ?? '') }}</textarea>
                                 @error('content_theme')
                                     <div class="text-danger mt-1">{{ $message }}</div>
@@ -93,7 +93,7 @@
                                 @enderror
                             </div>
 
-                            <button type="submit" class="btn btn-primary-600 radius-8">به روزرسانی</button>
+                            <button type="submit" class="btn btn-primary-600 radius-8"> ایجاد</button>
                         </form>
 
                     </div>

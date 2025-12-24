@@ -59,7 +59,17 @@
                                     <div class="text-danger mt-1">{{ $message }}</div>
                                 @enderror
                             </div>
-
+                            <!-- وضعیت -->
+                            <div>
+                                <label class="form-label fw-bold text-neutral-900">نوع پیام :</label>
+                                <select name="type" class="form-control border border-neutral-200 radius-8">
+                                    <option value="divar" @selected(old('divar', $smsTemplate->type ?? 'divar') == 'divar')>دیوار</option>
+                                    <option value="sms" @selected(old('sms', $smsTemplate->type ?? 'sms') == 'sms')>پیامک</option>
+                                </select>
+                                @error('type')
+                                    <div class="text-danger mt-1">{{ $message }}</div>
+                                @enderror
+                            </div>
                             <!-- ویرایشگر -->
                             <div>
                                 <label class="form-label fw-bold text-neutral-900">توضیحات برگه:</label>

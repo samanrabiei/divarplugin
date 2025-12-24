@@ -70,6 +70,7 @@ class SmsTemplateController extends Controller
             'key' => $request->key,
             'content' => $request->content_theme,
             'is_active' => $request->is_active,
+            'type' => $request->type,
         ]);
 
         session()->flash('toast', [

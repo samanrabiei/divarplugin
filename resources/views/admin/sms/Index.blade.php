@@ -31,6 +31,7 @@
                             </th>
                             <th scope="col " class="text-center">عنوان</th>
                             <th scope="col" class="text-center">اسلاگ</th>
+                            <th scope="col" class="text-center">نوع پیام</th>
                             <th scope="col" class="text-center">وضعیت</th>
                             <th scope="col" class="text-center">اقدام</th>
                         </tr>
@@ -50,14 +51,15 @@
                                 </td>
                                 <td> {{ $template->title }} </td>
                                 <td> {{ $template->key }} </td>
-                                <td class="text-center">
+                                <td> {{ $template->type }} </td>
+                                <td class="">
                                     @if ($template->is_active == 1)
                                         <span
                                             class="bg-success-focus text-success-600 border border-success-main px-24 py-4 radius-4 fw-medium text-sm">منتشر
                                             شده</span>
                                     @else
                                         <span
-                                            class="bg-warning-focus text-success-600 border border-success-main px-24 py-4 radius-4 fw-medium text-sm">
+                                            class="bg-danger-focus text-danger-600 border border-danger-main px-24 py-4 radius-4 fw-medium text-sm">
                                             پیش نویس</span>
                                     @endif
 
@@ -65,9 +67,9 @@
 
                                 </td>
 
-                                <td class="text-center">
+                                <td class="">
                                     <div class="d-flex align-items-center gap-10 justify-content-center">
-                                        <a href="" target="_blank">
+                                        <a href="{{ route('sms-templates.edit', $template) }}" target="_blank">
                                             <button type="button"
                                                 class="bg-info-focus bg-hover-info-200 text-info-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
                                                 <iconify-icon icon="majesticons:eye-line"
