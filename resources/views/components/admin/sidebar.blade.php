@@ -90,7 +90,7 @@
                                 class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
                             قالب ها</a>
 
-                        <a href="{{ url('admin/sms-templates/admin/create') }}"><i
+                        <a href="{{ url('admin/sms-templates/create') }}"><i
                                 class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
                             افزودن قالب جدید</a>
                     </li>

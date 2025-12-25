@@ -98,13 +98,13 @@
                             </div>
                         </strong>
                     </div>
-                    @if ($messages['inquirePrice'] != 0)
+                    @if ($messages['totalAmount'] != 0)
                         <div class="item">
                             <span>وضعیت پرداخت:</span>
-                            <strong class="status unpaid"> {{ $messages['priceStatus'] }}</strong>
+                            <strong class="status unpaid">پرداخت نشده</strong>
                         </div>
 
-                        <div class="item">
+                        {{-- <div class="item">
                             <span>شناسه قبض:</span>
                             <div class="copy-box">
                                 <strong id="paperId">{{ $messages['paperId'] }}</strong>
@@ -118,11 +118,11 @@
                                 <strong id="paymentId">{{ $messages['paymentId'] }}</strong>
                                 <button onclick="copyText(event, 'paymentId')" class="copy-btn">کپی</button>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="item">
                             <span>مبلغ جریمه‌ها:</span>
-                            <strong class="price">{{ number_format($messages['inquirePrice']) }} ریال</strong>
+                            <strong class="price">{{ number_format($messages['totalAmount']) }} ریال</strong>
                         </div>
                     @else
                         <img src="{{ asset('assets/images/serviceanswer/kalafe.jpg') }}">
@@ -135,18 +135,18 @@
                         <span>زمان استعلام:</span>
                         <strong>{{ $date_time }}</strong>
                     </div>
-                    <div class="item">
+                    {{-- <div class="item">
                         <span>شماره پیگیری استعلام:</span>
                         <strong>{{ $messages['ejrInquireNo'] }}</strong>
-                    </div>
-                    <div class="item">
+                    </div> --}}
+                    {{-- <div class="item">
                         <strong>
 
                             📝 توضیح:
                             برای پرداخت جریمه‌ها می‌توانید از برنامه ها معتبر بانکی، کارت خوان، دستگاه ATM و همه مواردی که
                             قابلیت پرداخت قبض با شناسه قبض و پرداخت را دارند استفاده نمایید.
                         </strong>
-                    </div>
+                    </div> --}}
                 </div>
             @else
             @endif

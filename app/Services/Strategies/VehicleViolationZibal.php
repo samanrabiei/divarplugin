@@ -18,8 +18,8 @@ class VehicleViolation implements ServiceStrategyInterface
     {
         // dd($palak_section_1, $palak_section_2);
         preg_match('/^([^\d]+)(\d{2})([^\d]+)(\d{3})(\d{2})$/u', $service['palak'], $matches);
-        $palak_section_1 = $matches[2] . ' ' . $matches[4] . ' ' . $matches[1];
-        $palak_section_2 = $matches[5];
+        $palak_section_1 = $matches[2] . ' ' . $matches[1] . ' ' . $matches[4] . ' - ' . $matches[5] . 'ایران ';
+        dd($palak_section_1);
         // dd(env('ZIBALL'),$service['phone'],$service['codemele'],$palak_section_1,$palak_section_2);
         $url = "https://service.zohal.io/api/v0/services/inquiry/vehicle_inquiry/total_violations";
 

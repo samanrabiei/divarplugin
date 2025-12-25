@@ -4,49 +4,29 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\ApiRequest;
 
-
-use App\Services\TransactionService;
-use Bavix\Wallet\Models\Transaction;
 
 class TestController extends Controller
 {
   public function index()
   {
+    $apiRequest = ApiRequest::create([
+      'endpoint' => 'trx_23423fsdf3432',
+      'payload' => [
+        'codemele' => '3750224560',
+        'mobile' => '09180078645',
+        'plateNumber' => '09180078645',
+      ],
+      'status' => 'paid',
+    ]);
 
-    // $transaction = app(TransactionService::class)->log(
-    //     1,
-    //     5000,
-    //     200000,
-    //     'ABC123',
-    //     1
-    // );
-    // if ($transaction == true) {
-    //     echo 'تراکنش با موفقیت ثبت شد';
-    // }
-    // $response = [
-    //   "data" => [
-    //     "plate" => "111ب22ایران22",
-    //     "priceStatus" => "پرداخت نشده",
-    //     "paperId" => "123456",
-    //     "paymentId" => "654321",
-    //     "warningPrice" => "500000",
-    //     "inquirePrice" => "500000",
-    //     "ejrInquireNo" => "987654"
-    //   ],
-    //   "success" => true,
-    //   "code" => 1,
-    //   "error" => null,
-    //   "message" => null
-    // ];
-    // $json = response()->json($response);
-    // $data = $json->getData(true);
-    // dd($data);
-    // $plate = $data->data->plate;
-    // echo $plate;
-    // return view('divar.services_answer.VehicleViolation');
+    $data = ApiRequest::where('endpoint', 'trx_23423fsdf3432')
+      ->update([
+        'status' => 'sent',
+        'response' => '{"codemele":"3750224560","mobile":"09180078645","plateNumber":"09180078645"}'
+      ]);
 
-
-    return view('divar.services.landingVehicleViolation');
+    return $data;
   }
 }
