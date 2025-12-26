@@ -13,7 +13,8 @@ class ApiRequest extends Model
         'endpoint',
         'payload',
         'status',
-        'response'
+        'response',
+        'user_id'
     ];
 
     protected $casts = [
