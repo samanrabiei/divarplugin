@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Http;
 
 class TransactionService
 {
-    public function log($user_id, $profit, $amount, $service_shnase, $sended)
+    public function log($user_id, $token, $profit, $amount, $service_shnase, $sended)
     {
         try {
             $transaction = DivarTransaction::create([
@@ -24,7 +24,7 @@ class TransactionService
                     'Content-Type' => 'application/json',
                     'Accept' => 'application/json',
                     'X-API-Key' => env('API_KEY'),
-                    'Authorization' => 'Bearer ' . 'ory_at_uS2AeA7IfNsCO9qqjUDDh640BK50fle1konCbXZZ_rU.gD7tlzbNF41HjVttv7ad4AhQ-XOeBvkVuy3tT4dFWg8',
+                    'Authorization' => 'Bearer ' . $token,
                 ])->post('https://open-api.divar.ir/v1/open-platform/user-payments', [
                     'amount_rials' => $amount,
                     'profit_rials' => $profit,
