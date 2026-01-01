@@ -3,15 +3,16 @@
 use App\Http\Controllers\begin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Authentication;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\profileController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\PageController;
+use App\Http\Controllers\VilationsContorller;
 use App\Http\Controllers\Admin\AdminCntroller;
-use App\Http\Controllers\Admin\AdminPageController;
 use App\Http\Controllers\KenarOauthController;
 use App\Http\Controllers\Auth\OtpLoginController;
+use App\Http\Controllers\Admin\AdminPageController;
 use App\Http\Controllers\Admin\CustommerController;
 use App\Http\Controllers\Admin\SmsTemplateController;
 use App\Http\Controllers\Admin\DivarTransactionController;
@@ -74,6 +75,11 @@ Route::get('/page/{slug}', [PageController::class, 'show'])->name('pages.show');
 
 Route::prefix('admin')->middleware('Modirate')->group(function () {
     Route::resource('pages', AdminPageController::class);
+});
+Route::prefix('/records')->group(function () {
+    Route::get('/index', [VilationsContorller::class, 'index'])->name('records.index');
+    Route::get('/view/{slug}', [VilationsContorller::class, 'view'])->name('records.view');
+    Route::get('/details/{slug}', [VilationsContorller::class, 'details'])->name('records.details');
 });
 
 //servicess

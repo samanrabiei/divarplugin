@@ -20,13 +20,14 @@ class VehicleViolation implements ServiceStrategyInterface
         //submit transction
         $id =  Auth::id();
         $user = User::find($id);
-        // $transaction = app(TransactionService::class)->log(
-        //     $user['id'],
-        //     env('Maie_divarcehicleviloation_price'),
-        //     $service['price'],
-        //     $service['type'],
-        //     0
-        // );
+        $transaction = app(TransactionService::class)->log(
+            $user['id'],
+            $user['token'],
+            env('Maie_divarcehicleviloation_price'),
+            $service['price'],
+            $service['type'],
+            0
+        );
 
         //end code test
         // dd($service);
